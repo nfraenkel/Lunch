@@ -1,26 +1,26 @@
 package main
 
 import (
-        "fmt"
-        "log"
-        "os"
-        "path/filepath"
-        "sort"
-        "encoding/json"
-        "flag"
-        "time"
-        "net/http"
-        _ "database/sql"
-        "io/ioutil"
-        "github.com/nfraenkel/lunch/vendor/github.com/jmoiron/sqlx"
-        _ "github.com/nfraenkel/lunch/vendor/github.com/lib/pq"
-        "github.com/nfraenkel/lunch/vendor/github.com/zenazn/goji"
-        "github.com/nfraenkel/lunch/vendor/github.com/zenazn/goji/web"
+	_ "database/sql"
+	"encoding/json"
+	"flag"
+	"fmt"
+	"github.com/nfraenkel/lunch/Godeps/_workspace/src/github.com/jmoiron/sqlx"
+	_ "github.com/nfraenkel/lunch/Godeps/_workspace/src/github.com/lib/pq"
+	"github.com/nfraenkel/lunch/Godeps/_workspace/src/github.com/zenazn/goji"
+	"github.com/nfraenkel/lunch/Godeps/_workspace/src/github.com/zenazn/goji/web"
+	"io/ioutil"
+	"log"
+	"net/http"
+	"os"
+	"path/filepath"
+	"sort"
+	"time"
 )
 
 type Server struct {
-	db            *sqlx.DB
-	port          string
+	db   *sqlx.DB
+	port string
 }
 
 var server Server
@@ -55,7 +55,7 @@ func initServer() {
 	} else {
 		dbUrl = os.Getenv("DATABASE_URL")
 	}
-	flag.Set("bind", ":" + port)
+	flag.Set("bind", ":"+port)
 	serverDir, err := filepath.Abs(filepath.Dir(os.Args[0]))
 	if err != nil {
 		log.Fatal(err)
@@ -129,11 +129,11 @@ func HasMigrated(filename string) (bool, error) {
 }
 
 type User struct {
-	Id int `db:"user_id" param:"user_id" json:"id"`
-	First string `db:"user_first" param:"user_first" json:"first_name"`
-	Last string `db:"user_last" param:"user_last" json:"last_name"`
-	Email string `db:"user_email" param:"user_email" json:"email"`
-	Photo string `db:"user_photo" param:"user_photo" json:"photo"`
+	Id      int       `db:"user_id" param:"user_id" json:"id"`
+	First   string    `db:"user_first" param:"user_first" json:"first_name"`
+	Last    string    `db:"user_last" param:"user_last" json:"last_name"`
+	Email   string    `db:"user_email" param:"user_email" json:"email"`
+	Photo   string    `db:"user_photo" param:"user_photo" json:"photo"`
 	Created time.Time `db:"user_created" param:"user_created" json:"created"`
 }
 
@@ -147,12 +147,12 @@ func GetUser(email string) (*User, error) {
 }
 
 type Venue struct {
-	Id int `db:"venue_id" param:"venue_id" json:"id"`
-	Name string `db:"venue_name" param:"venue_name" json:"name"`
-	Photo string `db:"venue_photo" param:"venue_photo" json:"photo"`
-	Location string `db:"venue_location" param:"venue_location" json:"location"`
-	Type string `db:"venue_type" param:"venue_type" json:"type"`
-	Created time.Time `db:"venue_created" param:"venue_created" json:"created"`
+	Id       int       `db:"venue_id" param:"venue_id" json:"id"`
+	Name     string    `db:"venue_name" param:"venue_name" json:"name"`
+	Photo    string    `db:"venue_photo" param:"venue_photo" json:"photo"`
+	Location string    `db:"venue_location" param:"venue_location" json:"location"`
+	Type     string    `db:"venue_type" param:"venue_type" json:"type"`
+	Created  time.Time `db:"venue_created" param:"venue_created" json:"created"`
 }
 
 func (v *Venue) Create() error {
@@ -164,8 +164,8 @@ func (v *Venue) Create() error {
 }
 
 type Choice struct {
-	User int `db:"user_id" param:"user_id" json:"user_id"`
-	Venue int `db:"venue_id" param:"venue_id" json:"venue_id"`
+	User    int       `db:"user_id" param:"user_id" json:"user_id"`
+	Venue   int       `db:"venue_id" param:"venue_id" json:"venue_id"`
 	Created time.Time `db:"choice_created" param:"choice_created" json:"created"`
 }
 
@@ -236,12 +236,12 @@ func GetVenuesWithChoices(c web.C, w http.ResponseWriter, r *http.Request) (int,
 	}
 	w.Header().Set("Content-Type", "application/json")
 	w.Write(buf)
-	return http.StatusOK, nil	
+	return http.StatusOK, nil
 }
 
 func hello(c web.C, w http.ResponseWriter, r *http.Request) (int, error) {
-    fmt.Fprintf(w, "Hello, %s!", c.URLParams["name"])
-    return http.StatusOK, nil
+	fmt.Fprintf(w, "Hello, %s!", c.URLParams["name"])
+	return http.StatusOK, nil
 }
 
 func respond(w http.ResponseWriter, v interface{}) (int, error) {

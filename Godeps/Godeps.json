@@ -1,0 +1,28 @@
+{
+	"ImportPath": "github.com/nfraenkel/lunch",
+	"GoVersion": "go1.5.1",
+	"Packages": [
+		"./..."
+	],
+	"Deps": [
+		{
+			"ImportPath": "github.com/goji/param",
+			"Rev": "da86c81e3e3c23b1948bc7a003d381250a032aa7"
+		},
+		{
+			"ImportPath": "github.com/jmoiron/sqlx",
+			"Comment": "sqlx-v1.1-45-g3a92b1f",
+			"Rev": "3a92b1fd96032c4490fa618370fbf98ec69b680c"
+		},
+		{
+			"ImportPath": "github.com/lib/pq",
+			"Comment": "go1.0-cutoff-59-gb269bd0",
+			"Rev": "b269bd035a727d6c1081f76e7a239a1b00674c40"
+		},
+		{
+			"ImportPath": "github.com/zenazn/goji",
+			"Comment": "v0.9.0-29-g46b46e0",
+			"Rev": "46b46e00f46dda650e04f0bceeb7c40732cd5988"
+		}
+	]
+}
