@@ -1,0 +1,13 @@
+{
+  "name": "lunch",
+  "description": "Hangry?",
+  "keywords": [
+    "lunch",
+    "go",
+    "yo"
+  ],
+  "image": "heroku/go:1.5",
+  "mount_dir": "src/github.com/nfraenkel/lunch",
+  "website": "http://github.com/nfraenkel/lunch",
+  "repository": "http://github.com/nfraenkel/lunch"
+}

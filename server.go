@@ -7,6 +7,7 @@ import (
         "path/filepath"
         "sort"
         "encoding/json"
+        "flag"
         "time"
         "net/http"
         _ "database/sql"
@@ -19,6 +20,7 @@ import (
 
 type Server struct {
 	db            *sqlx.DB
+	port          string
 }
 
 var server Server
@@ -44,6 +46,12 @@ func initServer() {
 		name TEXT NOT NULL UNIQUE,
 		created TIMESTAMP without time zone default (now() at time zone 'utc') 
 	)`
+
+	port := os.Getenv("PORT")
+	if port == "" {
+		port = "8000"
+	}
+	flag.Set("bind", ":" + port)
 	serverDir, err := filepath.Abs(filepath.Dir(os.Args[0]))
 	if err != nil {
 		log.Fatal(err)
