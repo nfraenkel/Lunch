@@ -40,6 +40,7 @@ func ApiHandler(h ApiHandlerFunc) web.HandlerFunc {
 
 func initServer() {
 	var migrationsFolder string
+	var dbUrl string
 	var migrationSql = `
 	CREATE TABLE IF NOT EXISTS migrations (
 		id SERIAL PRIMARY KEY,
@@ -50,6 +51,9 @@ func initServer() {
 	port := os.Getenv("PORT")
 	if port == "" {
 		port = "8000"
+		dbUrl = devDb
+	} else {
+		dbUrl = os.Getenv("DATABASE_URL")
 	}
 	flag.Set("bind", ":" + port)
 	serverDir, err := filepath.Abs(filepath.Dir(os.Args[0]))

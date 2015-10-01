@@ -1,3 +1,3 @@
 package main
 
-var dbUrl string = "user=rohit dbname=lunch sslmode=disable"
+var devDb string = "user=rohit dbname=lunch sslmode=disable"
