@@ -10,8 +10,11 @@
 
 @interface User : NSObject
 
-@property (strong, nonatomic) NSString *first, *last, *email;
+@property (strong, nonatomic) NSString *first, *last, *email, *photoUrl;
 
--(id)initWithFirst:(NSString *)newFirst andLast:(NSString *)newLast andEmail:(NSString *)newEmail;
+-(id)initWithFirst:(NSString *)newFirst
+           andLast:(NSString *)newLast
+          andEmail:(NSString *)newEmail
+          andPhoto:(NSString*)newPhoto;
 
 @end

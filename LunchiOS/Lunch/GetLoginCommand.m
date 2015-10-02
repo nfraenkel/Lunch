@@ -33,7 +33,7 @@
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:url] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:10];
     [request setHTTPMethod:@"POST"];
     [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
-    NSString *postString = [NSString stringWithFormat:@"email=%@", self.email];
+    NSString *postString = [NSString stringWithFormat:@"{\"email\":\"%@\"}", self.email];
     [request setHTTPBody:[postString dataUsingEncoding:NSUTF8StringEncoding]];
     
     // start connection
@@ -66,14 +66,26 @@
     NSLog(@"[GetLoginCommand] connectiondidfinishloading!");
     [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
     
-    //    NSString *responseString = [[NSString alloc] initWithData:_data encoding:NSUTF8StringEncoding];
-    //    NSLog(@"response data: %@", responseString);
-    
     NSDictionary *dictResponse = [NSJSONSerialization JSONObjectWithData:_data options:0 error:nil];
     
-    NSLog(@"LOGIN RESPONSE DICT: %@", dictResponse);
+    if (dictResponse == NULL) {
+        UIAlertView *alert = [[UIAlertView alloc]
+                              initWithTitle:@"Bad Login Info"
+                              message:@"Please try typing your email and password again."
+                              delegate:self
+                              cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alert show];
+        return;
+    }
 
-    User *newUser = [[User alloc] initWithFirst:@"Nathan" andLast:@"Fraenkel" andEmail:@"nathan.fraenkel@newscred.com"];
+    NSString *first = [dictResponse objectForKey:@"first_name"];
+    NSString *last = [dictResponse objectForKey:@"last_name"];
+    NSString *em = [dictResponse objectForKey:@"email"];
+    NSString *photo = [dictResponse objectForKey:@"photo"];
+    User *newUser = [[User alloc] initWithFirst:first
+                                        andLast:last
+                                       andEmail:em
+                                       andPhoto:photo];
 
     [self.delegate reactToLoginResponse:newUser];
     
