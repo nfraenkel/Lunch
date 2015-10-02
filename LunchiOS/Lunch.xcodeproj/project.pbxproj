@@ -21,6 +21,9 @@
 		F6A98FE41BBECD0A00ECA7D6 /* JoinChoiceCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F6A98FE31BBECD0A00ECA7D6 /* JoinChoiceCommand.m */; settings = {ASSET_TAGS = (); }; };
 		F6A98FE61BBECD6500ECA7D6 /* Lunch--App-Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = F6A98FE51BBECD6500ECA7D6 /* Lunch--App-Icon.png */; settings = {ASSET_TAGS = (); }; };
 		F6A98FE91BBED2D300ECA7D6 /* DeleteJoinCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F6A98FE81BBED2D300ECA7D6 /* DeleteJoinCommand.m */; settings = {ASSET_TAGS = (); }; };
+		F6A98FED1BBED6AE00ECA7D6 /* tutorial-screen-1.png in Resources */ = {isa = PBXBuildFile; fileRef = F6A98FEA1BBED6AE00ECA7D6 /* tutorial-screen-1.png */; settings = {ASSET_TAGS = (); }; };
+		F6A98FEE1BBED6AE00ECA7D6 /* tutorial-screen-2.png in Resources */ = {isa = PBXBuildFile; fileRef = F6A98FEB1BBED6AE00ECA7D6 /* tutorial-screen-2.png */; settings = {ASSET_TAGS = (); }; };
+		F6A98FEF1BBED6AE00ECA7D6 /* tutorial-screen-3.png in Resources */ = {isa = PBXBuildFile; fileRef = F6A98FEC1BBED6AE00ECA7D6 /* tutorial-screen-3.png */; settings = {ASSET_TAGS = (); }; };
 		F6AABD951BBEBD6600B4A3D4 /* GetHistoryCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F6AABD941BBEBD6600B4A3D4 /* GetHistoryCommand.m */; settings = {ASSET_TAGS = (); }; };
 		F6AABD991BBEC19C00B4A3D4 /* HistoryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F6AABD971BBEC19C00B4A3D4 /* HistoryTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
 		F6AABD9A1BBEC19C00B4A3D4 /* HistoryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F6AABD981BBEC19C00B4A3D4 /* HistoryTableViewCell.xib */; settings = {ASSET_TAGS = (); }; };
@@ -80,6 +83,9 @@
 		F6A98FE51BBECD6500ECA7D6 /* Lunch--App-Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Lunch--App-Icon.png"; sourceTree = "<group>"; };
 		F6A98FE71BBED2D300ECA7D6 /* DeleteJoinCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeleteJoinCommand.h; sourceTree = "<group>"; };
 		F6A98FE81BBED2D300ECA7D6 /* DeleteJoinCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeleteJoinCommand.m; sourceTree = "<group>"; };
+		F6A98FEA1BBED6AE00ECA7D6 /* tutorial-screen-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tutorial-screen-1.png"; sourceTree = "<group>"; };
+		F6A98FEB1BBED6AE00ECA7D6 /* tutorial-screen-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tutorial-screen-2.png"; sourceTree = "<group>"; };
+		F6A98FEC1BBED6AE00ECA7D6 /* tutorial-screen-3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tutorial-screen-3.png"; sourceTree = "<group>"; };
 		F6AABD931BBEBD6600B4A3D4 /* GetHistoryCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetHistoryCommand.h; sourceTree = "<group>"; };
 		F6AABD941BBEBD6600B4A3D4 /* GetHistoryCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetHistoryCommand.m; sourceTree = "<group>"; };
 		F6AABD961BBEC19C00B4A3D4 /* HistoryTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryTableViewCell.h; sourceTree = "<group>"; };
@@ -154,6 +160,9 @@
 		649AB6311BBE0DA4001F7014 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				F6A98FEA1BBED6AE00ECA7D6 /* tutorial-screen-1.png */,
+				F6A98FEB1BBED6AE00ECA7D6 /* tutorial-screen-2.png */,
+				F6A98FEC1BBED6AE00ECA7D6 /* tutorial-screen-3.png */,
 				F6A98FE51BBECD6500ECA7D6 /* Lunch--App-Icon.png */,
 				F6F580A81BBE757B00DDC328 /* background.png */,
 				F68ECF761BBE59E500092AB4 /* icon-food-1.png */,
@@ -385,6 +394,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F6A98FEE1BBED6AE00ECA7D6 /* tutorial-screen-2.png in Resources */,
 				F68ECF7D1BBE59E500092AB4 /* icon-food-3.png in Resources */,
 				F6F580A91BBE757B00DDC328 /* background.png in Resources */,
 				F68ECF7C1BBE59E500092AB4 /* icon-food-2.png in Resources */,
@@ -399,9 +409,11 @@
 				F68F44881BBE15EB00708F2E /* lunch-logo.png in Resources */,
 				F68ECF751BBE4F6000092AB4 /* icon-logo.png in Resources */,
 				F68F44861BBE15D900708F2E /* cD1mMjhjMTAyOTBjYjRlYWRlZGE4ZjJlMDg0OWI5NjZlMiZnPWY2ZDljYTlkZjcyMjkxNTIwNDAxM2U5Yjk5YTc1MDg1.jpeg in Resources */,
+				F6A98FEF1BBED6AE00ECA7D6 /* tutorial-screen-3.png in Resources */,
 				F6F580B81BBEB4DD00DDC328 /* TutorialCardViewController.xib in Resources */,
 				F68ECF7B1BBE59E500092AB4 /* icon-food-1.png in Resources */,
 				F68ECF7F1BBE59E500092AB4 /* icon-food-5.png in Resources */,
+				F6A98FED1BBED6AE00ECA7D6 /* tutorial-screen-1.png in Resources */,
 				F6DEE8751BBDBA1B00060640 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
