@@ -67,7 +67,7 @@
     // greeting label
     CGRect greetingLabelFrame = CGRectMake(0, 150, screenWidth, 40);
     UILabel *greetingLabel = [[UILabel alloc] initWithFrame:greetingLabelFrame];
-    [greetingLabel setText:[NSString stringWithFormat:@"Hungry %@?", self.singleton.user.first]];
+    [greetingLabel setText:[NSString stringWithFormat:@"Hungry, %@?", self.singleton.user.first]];
     greetingLabel.textAlignment = NSTextAlignmentCenter;
     [greetingLabel setFont:[UIFont fontWithName:@"HelveticaNeue" size:32.0f]];
     [greetingLabel setTextColor:[UIColor whiteColor]];
@@ -172,6 +172,8 @@
 
 -(void)refreshUI {
     
+    UIColor *darkOrange = [UIColor colorWithRed:215.0f/255.0f green:80.0f/255.0f blue:30.0f/255.0f alpha:1.0f];
+
     for (int i = 0; i < [self.choices count]; i++) {
         Choice *ch = (Choice*)[self.choices objectAtIndex:i];
         
@@ -214,7 +216,14 @@
             usersText = @"No one is going yet. Lead the way!";
         }
         else {
-            usersText = [NSString stringWithFormat:@"%lu of your coworkers are going", [users count]];
+            UILabel *numberLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 90, 10, 20)];
+            [numberLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Bold" size:16.0f]];
+            [numberLabel setTextColor:darkOrange];
+            [numberLabel setText:[NSString stringWithFormat:@"%lu", [users count]]];
+            [rowView addSubview: numberLabel];
+            
+            usersText = @"of your coworkers are going";
+            [usersGoingLabel setFrame:CGRectMake(35, 90, screenWidth - 20, 20)];
         }
         [usersGoingLabel setText:usersText];
         [usersGoingLabel setTextColor:[UIColor lightGrayColor]];

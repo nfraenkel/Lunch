@@ -51,7 +51,7 @@
 -(void)reactToLoginResponse:(User *)newUser {
     self.singleton.user = newUser;
 
-    [self performSegueWithIdentifier:@"showTutorial" sender:self];
+    [self performSegueWithIdentifier:@"showMainFeed" sender:self];
 }
 
 @end

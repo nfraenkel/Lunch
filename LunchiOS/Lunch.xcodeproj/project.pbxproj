@@ -36,6 +36,8 @@
 		F6DEE8C51BBDF65900060640 /* GetLoginCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F6DEE8C41BBDF65900060640 /* GetLoginCommand.m */; };
 		F6F580A91BBE757B00DDC328 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = F6F580A81BBE757B00DDC328 /* background.png */; settings = {ASSET_TAGS = (); }; };
 		F6F580AC1BBE90B900DDC328 /* TutorialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F6F580AB1BBE90B800DDC328 /* TutorialViewController.m */; settings = {ASSET_TAGS = (); }; };
+		F6F580B71BBEB4DD00DDC328 /* TutorialCardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F6F580B51BBEB4DD00DDC328 /* TutorialCardViewController.m */; settings = {ASSET_TAGS = (); }; };
+		F6F580B81BBEB4DD00DDC328 /* TutorialCardViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F6F580B61BBEB4DD00DDC328 /* TutorialCardViewController.xib */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -103,6 +105,9 @@
 		F6F580A81BBE757B00DDC328 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
 		F6F580AA1BBE90B800DDC328 /* TutorialViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TutorialViewController.h; sourceTree = "<group>"; };
 		F6F580AB1BBE90B800DDC328 /* TutorialViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TutorialViewController.m; sourceTree = "<group>"; };
+		F6F580B41BBEB4DD00DDC328 /* TutorialCardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TutorialCardViewController.h; sourceTree = "<group>"; };
+		F6F580B51BBEB4DD00DDC328 /* TutorialCardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TutorialCardViewController.m; sourceTree = "<group>"; };
+		F6F580B61BBEB4DD00DDC328 /* TutorialCardViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TutorialCardViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -192,6 +197,9 @@
 				F6DEE8781BBDBA1B00060640 /* LaunchScreen.storyboard */,
 				F6DEE87B1BBDBA1B00060640 /* Info.plist */,
 				F6DEE86A1BBDBA1B00060640 /* Supporting Files */,
+				F6F580B41BBEB4DD00DDC328 /* TutorialCardViewController.h */,
+				F6F580B51BBEB4DD00DDC328 /* TutorialCardViewController.m */,
+				F6F580B61BBEB4DD00DDC328 /* TutorialCardViewController.xib */,
 			);
 			path = Lunch;
 			sourceTree = "<group>";
@@ -363,6 +371,7 @@
 				F68F44881BBE15EB00708F2E /* lunch-logo.png in Resources */,
 				F68ECF751BBE4F6000092AB4 /* icon-logo.png in Resources */,
 				F68F44861BBE15D900708F2E /* cD1mMjhjMTAyOTBjYjRlYWRlZGE4ZjJlMDg0OWI5NjZlMiZnPWY2ZDljYTlkZjcyMjkxNTIwNDAxM2U5Yjk5YTc1MDg1.jpeg in Resources */,
+				F6F580B81BBEB4DD00DDC328 /* TutorialCardViewController.xib in Resources */,
 				F68ECF7B1BBE59E500092AB4 /* icon-food-1.png in Resources */,
 				F68ECF7F1BBE59E500092AB4 /* icon-food-5.png in Resources */,
 				F6DEE8751BBDBA1B00060640 /* Main.storyboard in Resources */,
@@ -396,6 +405,7 @@
 				F6DEE8BB1BBDCBF400060640 /* Choice.m in Sources */,
 				F6DEE8C11BBDEB7E00060640 /* JoinButton.m in Sources */,
 				F6DEE8B81BBDC9AD00060640 /* GetChoicesCommand.m in Sources */,
+				F6F580B71BBEB4DD00DDC328 /* TutorialCardViewController.m in Sources */,
 				F6DEE8AF1BBDC35E00060640 /* Venue.m in Sources */,
 				F6DEE8BE1BBDCFE400060640 /* FeedViewController.m in Sources */,
 				F6DEE86F1BBDBA1B00060640 /* AppDelegate.m in Sources */,
