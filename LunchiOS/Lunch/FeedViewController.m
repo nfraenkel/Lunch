@@ -239,17 +239,18 @@
         [rowView addSubview:usersGoingLabel];
         
         UIColor *darkOrange = [UIColor colorWithRed:215.0f/255.0f green:80.0f/255.0f blue:30.0f/255.0f alpha:1.0f];
-        CGRect buttonFrame = CGRectMake(rowViewFrame.size.width - 60, 87.5, 40, 30);
-        JoinButton *joinButton = [[JoinButton alloc] initWithFrame:buttonFrame];
-        joinButton.venue = ch.venue;
-        joinButton.otherUsers = ch.users;
-        [joinButton setTitle:@"Join" forState:UIControlStateNormal];
+        CGRect buttonFrame = CGRectMake(rowViewFrame.size.width - 70, 87.5, 60, 30);
+        UIButton *joinButton = [UIButton buttonWithType:UIButtonTypeSystem];
+        joinButton.tag = i;
+        [joinButton setFrame:buttonFrame];
+        [joinButton setTitle:@"Let's Go" forState:UIControlStateNormal];
         [joinButton setTitleColor:darkOrange forState:UIControlStateNormal];
         [joinButton.titleLabel setFont:[UIFont fontWithName:@"HelveticaNeue" size:12.0f]];
         joinButton.layer.borderColor = darkOrange.CGColor;
         joinButton.layer.borderWidth = 1.0f;
         joinButton.layer.cornerRadius = 5;
         joinButton.layer.masksToBounds = YES;
+        joinButton.reversesTitleShadowWhenHighlighted = YES;
         [joinButton addTarget:self
                        action:@selector(joinLunch:)
              forControlEvents:UIControlEventTouchUpInside];
@@ -287,13 +288,15 @@
 */
 
 -(void)joinLunch:(UIButton *)sender {
-    JoinButton *jb = (JoinButton*)sender;
+    NSInteger num = sender.tag;
     
-    self.singleton.currentVenue = jb.venue;
-    self.singleton.otherUsers = jb.otherUsers;
+    Choice *ch = [self.choices objectAtIndex:num];
+    
+    self.singleton.currentVenue = ch.venue;
+    self.singleton.otherUsers = ch.users;
     
     // join choice
-    JoinChoiceCommand *cmd = [[JoinChoiceCommand alloc] initWithUser:self.singleton.user andVenue:jb.venue];
+    JoinChoiceCommand *cmd = [[JoinChoiceCommand alloc] initWithUser:self.singleton.user andVenue:ch.venue];
     cmd.delegate = self;
     [cmd joinChoice];
 }
@@ -376,26 +379,30 @@
     
     runningTotal += 20;
     
-    UIButton *openMapsButton = [[UIButton alloc] initWithFrame:CGRectMake(margin, runningTotal, screenWidth - (2*margin), buttonHeight)];
+    UIButton *openMapsButton = [UIButton buttonWithType:UIButtonTypeSystem];
+    [openMapsButton setFrame:CGRectMake(margin, runningTotal, screenWidth - (2*margin), buttonHeight)];
     [openMapsButton setTitle:@"Open in Maps?" forState:UIControlStateNormal];
     [openMapsButton setTitleColor:darkOrange forState:UIControlStateNormal];
     openMapsButton.layer.cornerRadius = 5;
     openMapsButton.layer.borderColor = darkOrange.CGColor;
     openMapsButton.layer.borderWidth = 1.0f;
     openMapsButton.layer.masksToBounds = YES;
+    openMapsButton.reversesTitleShadowWhenHighlighted = YES;
     [openMapsButton addTarget:self
                        action:@selector(openInMaps:)
              forControlEvents:UIControlEventTouchUpInside];
     [scrolley addSubview:openMapsButton];
     runningTotal += buttonHeight + 20;
     
-    UIButton *cancelButton = [[UIButton alloc] initWithFrame:CGRectMake(margin, runningTotal, screenWidth - (2*margin), buttonHeight)];
+    UIButton *cancelButton = [UIButton buttonWithType:UIButtonTypeSystem];
+    [cancelButton setFrame:CGRectMake(margin, runningTotal, screenWidth - (2*margin), buttonHeight)];
     [cancelButton setTitle:@"Go somewhere else?" forState:UIControlStateNormal];
     [cancelButton setTitleColor:[UIColor colorWithWhite:0.8f alpha:1.0f] forState:UIControlStateNormal];
     cancelButton.layer.cornerRadius = 5;
     cancelButton.layer.borderColor = [UIColor colorWithWhite:0.8f alpha:1.0f].CGColor;
     cancelButton.layer.borderWidth = 1.0f;
     cancelButton.layer.masksToBounds = YES;
+    cancelButton.reversesTitleShadowWhenHighlighted = YES;
     [cancelButton addTarget:self
                      action:@selector(cancelLunch:)
            forControlEvents:UIControlEventTouchUpInside];
