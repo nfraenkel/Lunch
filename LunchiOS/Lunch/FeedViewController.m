@@ -126,7 +126,24 @@
     
     // TABLE VIEW
     tv = [[UITableView alloc] initWithFrame:bigViewFrame];
+    [tv setBackgroundColor:[UIColor blueColor]];
     tv.hidden = YES;
+    
+    // CONFIRMATION VIEW
+    cv = [[UIView alloc] initWithFrame:bigViewFrame];
+    cv.backgroundColor = [UIColor redColor];
+    UIButton *cancelButton = [[UIButton alloc] initWithFrame:CGRectMake(0, screenHeight - 30, screenWidth, 30)];
+    [cancelButton setTitle:@"go somewhere else?" forState:UIControlStateNormal];
+    [cancelButton setBackgroundColor:[UIColor orangeColor]];
+    [cancelButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [cancelButton addTarget:self
+                     action:@selector(cancelLunch:)
+           forControlEvents:UIControlEventTouchUpInside];
+    [cv addSubview:cancelButton];
+    cv.hidden = YES;
+    
+    [self.view addSubview:tv];
+    [self.view addSubview:cv];
 
 }
 
@@ -172,8 +189,15 @@
 -(void)joinLunch:(UIButton *)sender {
     NSLog(@"sender: %@", sender);
 //    [self performSegueWithIdentifier:@"showConfirmation" sender:self];
+    [sv setHidden:YES];
+    [cv setHidden:NO];
 }
 
+-(void)cancelLunch:(UIButton *)sender {
+    NSLog(@"CANCELLING");
+    [sv setHidden:NO];
+    [cv setHidden:YES];
+}
 
 -(void)reactToGetChoicesError:(NSError *)error {
     NSLog(@"ERRORRRRRRR: %@", error);

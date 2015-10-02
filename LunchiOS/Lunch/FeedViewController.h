@@ -15,6 +15,7 @@
 @interface FeedViewController : UIViewController <UIScrollViewDelegate, GetChoicesDelegate> {
     UIScrollView *sv;
     UITableView *tv;
+    UIView *cv;
 }
 
 @property (strong, nonatomic) LunchSingleton *singleton;
