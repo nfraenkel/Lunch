@@ -29,7 +29,24 @@
                                    andDistance:distance
                                    andLocation:location
                                    andPhotoUrl:photoUrl];
-        self.users = us;
+        
+        NSMutableArray *uss = [NSMutableArray array];
+        for (int i = 0; i < [us count]; i++) {
+            NSDictionary *d = [us objectAtIndex:i];
+            
+            NSString *idd = [d objectForKey:@"id"];
+            NSString *first = [d objectForKey:@"first_name"];
+            NSString *last = [d objectForKey:@"last_name"];
+            NSString *email = [d objectForKey:@"email"];
+            NSString *p = [d objectForKey:@"photo"];
+            User *u = [[User alloc] initWithId:idd
+                                      andFirst:first
+                                       andLast:last
+                                      andEmail:email
+                                      andPhoto:p];
+            [uss addObject:u];
+        }
+        self.users = uss;
         
     }
     return self;

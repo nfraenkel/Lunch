@@ -22,6 +22,8 @@
     
     self.singleton = [LunchSingleton sharedDataModel];
     
+    UIColor *brandOrange = [UIColor colorWithRed:241.0f/255.0f green:92.0f/255.0f blue:37.0f/255.0f alpha:1.0f];
+    
     // SEGMENTED CONTROL
     [self.segmentedControl addTarget:self
                               action:@selector(segmentSwitch:)
@@ -33,37 +35,88 @@
     screenWidth = screenRect.size.width;
     screenHeight = screenRect.size.height;
     
-    CGRect bigViewFrame = CGRectMake(0, 25 + segmentedControl.frame.size.height, screenWidth, screenHeight - segmentedControl.frame.size.height - 25);
+    // PROFILE PIC
+    NSInteger offset = 50;
+    NSInteger picSize = 30;
+    UIImageView *profilePhotoImageView = [[UIImageView alloc] initWithFrame:CGRectMake(screenWidth - picSize - 20, offset + segmentedControl.frame.origin.y, picSize, picSize)];
+    UIImage *profPic = [self imageFromURLString:self.singleton.user.photoUrl];
+    [profilePhotoImageView setImage:profPic];
+    profilePhotoImageView.layer.cornerRadius = 15;
+    profilePhotoImageView.layer.masksToBounds = YES;
+    [self.view addSubview:profilePhotoImageView];
+    
+    // BIG VIEW / SCROLL VIEW
+    CGRect bigViewFrame = CGRectMake(0, offset + segmentedControl.frame.size.height, screenWidth, screenHeight - segmentedControl.frame.size.height - offset);
     sv = [[UIScrollView alloc] initWithFrame:bigViewFrame];
     sv.delegate = self;
     [self.view addSubview:sv];
     
+    // seperator
+    UIView *seperatorTop = [[UIView alloc] initWithFrame:CGRectMake(0, bigViewFrame.origin.y, screenWidth, 1)];
+    [seperatorTop setBackgroundColor:[UIColor lightGrayColor]];
+    [self.view addSubview:seperatorTop];
+    
+    // orange top background
+    CGRect orangeBGTopFrame = CGRectMake(0, 0, screenWidth, 300);
+    UIView *orangeBGTop = [[UIView alloc] initWithFrame:orangeBGTopFrame];
+    [orangeBGTop setBackgroundColor:brandOrange];
+    [sv addSubview:orangeBGTop];
+    
     // greeting label
-    CGRect greetingLabelFrame = CGRectMake(0, 160, screenWidth, 30);
+    CGRect greetingLabelFrame = CGRectMake(0, 140, screenWidth, 40);
     UILabel *greetingLabel = [[UILabel alloc] initWithFrame:greetingLabelFrame];
     [greetingLabel setText:[NSString stringWithFormat:@"Hungry %@?", self.singleton.user.first]];
     greetingLabel.textAlignment = NSTextAlignmentCenter;
-    
-    CGRect dateLabelFrame = CGRectMake(0, 220, screenWidth, 30);
+    [greetingLabel setFont:[UIFont fontWithName:@"HelveticaNeue" size:28.0f]];
+    [greetingLabel setTextColor:[UIColor whiteColor]];
+
+    // date
+    CGRect lunchForFrame = CGRectMake(0, 10, screenWidth, 20);
+    UILabel *lunchFor = [[UILabel alloc] initWithFrame:lunchForFrame];
+    [lunchFor setText:[NSString stringWithFormat:@"Lunch for"]];
+    lunchFor.textAlignment = NSTextAlignmentCenter;
+    [lunchFor setTextColor:[UIColor whiteColor]];
+    [lunchFor setFont:[UIFont fontWithName:@"HelveticaNeue" size:16.0f]];
+
+    CGRect dateLabelFrame = CGRectMake(0, 32, screenWidth, 20);
     UILabel *dateLabel = [[UILabel alloc] initWithFrame:dateLabelFrame];
     [dateLabel setText:[NSString stringWithFormat:@"Thursday, October 1"]];
     dateLabel.textAlignment = NSTextAlignmentCenter;
+    [dateLabel setTextColor:[UIColor whiteColor]];
+    [dateLabel setFont:[UIFont fontWithName:@"HelveticaNeue" size:16.0f]];
     
-    CGRect promptLabelFrame = CGRectMake(80, 280, screenWidth - 160, 50);
+    CGRect promptLabelFrame = CGRectMake(80, 220, screenWidth - 160, 50);
     UILabel *promptLabel = [[UILabel alloc] initWithFrame:promptLabelFrame];
     promptLabel.textAlignment = NSTextAlignmentCenter;
     promptLabel.numberOfLines = 2;
     [promptLabel setText:[NSString stringWithFormat:@"See where your coworkers are going for lunch"]];
+    [promptLabel setTextColor:[UIColor whiteColor]];
+    [promptLabel setFont:[UIFont fontWithName:@"HelveticaNeue" size:16.0f]];
     
-    [sv addSubview:greetingLabel];
-    [sv addSubview:dateLabel];
-    [sv addSubview:promptLabel];
+    NSInteger foodSize = 50;
+    UIImageView *food1 = [[UIImageView alloc] initWithFrame:CGRectMake(30, 80, foodSize, foodSize)];
+    [food1 setImage:[UIImage imageNamed:@"icon-food-1.png"]];
+    UIImageView *food2 = [[UIImageView alloc] initWithFrame:CGRectMake(30, 200, foodSize, foodSize)];
+    [food2 setImage:[UIImage imageNamed:@"icon-food-2.png"]];
+    UIImageView *food3 = [[UIImageView alloc] initWithFrame:CGRectMake(screenWidth/2 - foodSize/2, 75, foodSize, foodSize)];
+    [food3 setImage:[UIImage imageNamed:@"icon-food-3.png"]];
+    UIImageView *food4 = [[UIImageView alloc] initWithFrame:CGRectMake(screenWidth - 30 - foodSize, 80, foodSize, foodSize)];
+    [food4 setImage:[UIImage imageNamed:@"icon-food-4.png"]];
+    UIImageView *food5 = [[UIImageView alloc] initWithFrame:CGRectMake(screenWidth - 30 - foodSize, 200, foodSize, foodSize)];
+    [food5 setImage:[UIImage imageNamed:@"icon-food-5.png"]];
     
-    totalSize = promptLabel.frame.origin.y + promptLabel.frame.size.height + 20;
+    [orangeBGTop addSubview:greetingLabel];
+    [orangeBGTop addSubview:lunchFor];
+    [orangeBGTop addSubview:dateLabel];
+    [orangeBGTop addSubview:promptLabel];
+    [orangeBGTop addSubview:food1];
+    [orangeBGTop addSubview:food2];
+    [orangeBGTop addSubview:food3];
+    [orangeBGTop addSubview:food4];
+    [orangeBGTop addSubview:food5];
+    
+    totalSize = orangeBGTopFrame.origin.y + orangeBGTopFrame.size.height + 10;
     sv.contentSize = CGSizeMake(screenWidth, totalSize);
-    
-//    self.choices = [NSMutableArray arrayWithObjects:@"Dos Toros", @"Spreads", @"Dig Inn", @"SweetGreen", @"Fresh & Co", @"Essen", nil];
-    
     
     // TABLE VIEW
     tv = [[UITableView alloc] initWithFrame:bigViewFrame];
@@ -86,7 +139,6 @@
     [self.view addSubview:tv];
     [self.view addSubview:cv];
 
-    
     [self fetchChoicesForToday];
 }
 
@@ -156,6 +208,49 @@
         
         UIView *seperator = [[UIView alloc] initWithFrame:CGRectMake(5, rowHeight / 2, rowViewFrame.size.width - 10, 1)];
         [seperator setBackgroundColor:[UIColor lightGrayColor]];
+        
+        // users
+        NSInteger runningX = 5;
+        NSArray *users = ch.users;
+        for (int i = 0; i < [users count]; i++) {
+            if (i == 3) {
+                UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(runningX, 60, 20, 20)];
+                [imageView setTag:i];
+                [imageView setImage:[UIImage imageNamed:@"default-user.png"]];
+                imageView.layer.cornerRadius = imageView.frame.size.height/2;
+                imageView.layer.masksToBounds = YES;
+                [rowView addSubview:imageView];
+
+                runningX += 20 + 5;
+                break;
+            }
+            User *u = (User*)[users objectAtIndex:i];
+            UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(runningX, 80, 20, 20)];
+            [imageView setTag:i];
+            [imageView setImage:[self imageFromURLString:u.photoUrl]];
+            imageView.layer.cornerRadius = imageView.frame.size.height/2;
+            imageView.layer.masksToBounds = YES;
+            [rowView addSubview:imageView];
+            
+            runningX += 20 + 5;
+        }
+        UILabel *usersGoingLabel = [[UILabel alloc] initWithFrame:CGRectMake(runningX, 80, screenWidth - runningX, 20)];
+        NSString *usersText = NULL;
+        switch ([users count]) {
+            case 0:
+                usersText = [NSString stringWithFormat:@"No users are going to %@", ch.venue.name];
+                break;
+            case 1:
+                usersText = @" is going";
+                break;
+            default:
+                usersText = @" are going";
+                break;
+        }
+        [usersGoingLabel setText:usersText];
+        [usersGoingLabel setTextColor:[UIColor lightGrayColor]];
+        [usersGoingLabel setFont:[UIFont systemFontOfSize:10.0f]];
+        [rowView addSubview:usersGoingLabel];
         
         CGRect buttonFrame = CGRectMake(rowViewFrame.size.width - 60, 75, 40, 30);
         JoinButton *joinButton = [[JoinButton alloc] initWithFrame:buttonFrame];

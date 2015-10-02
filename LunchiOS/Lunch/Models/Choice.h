@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "Venue.h"
+#import "User.h"
 
 @interface Choice : NSObject
 

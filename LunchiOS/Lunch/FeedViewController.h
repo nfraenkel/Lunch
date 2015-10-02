@@ -11,6 +11,7 @@
 #import "GetChoicesCommand.h"
 #import "JoinButton.h"
 #import "Choice.h"
+#import "User.h"
 #import "Constants.h"
 
 @interface FeedViewController : UIViewController <UIScrollViewDelegate, GetChoicesDelegate> {

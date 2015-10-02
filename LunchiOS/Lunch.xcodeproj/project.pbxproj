@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F68ECF6F1BBE490B00092AB4 /* default-user.png in Resources */ = {isa = PBXBuildFile; fileRef = F68ECF6E1BBE490B00092AB4 /* default-user.png */; settings = {ASSET_TAGS = (); }; };
+		F68ECF711BBE4D3A00092AB4 /* icon-people.png in Resources */ = {isa = PBXBuildFile; fileRef = F68ECF701BBE4D3A00092AB4 /* icon-people.png */; settings = {ASSET_TAGS = (); }; };
+		F68ECF731BBE4E4D00092AB4 /* icon-globe.png in Resources */ = {isa = PBXBuildFile; fileRef = F68ECF721BBE4E4D00092AB4 /* icon-globe.png */; settings = {ASSET_TAGS = (); }; };
+		F68ECF751BBE4F6000092AB4 /* icon-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = F68ECF741BBE4F6000092AB4 /* icon-logo.png */; settings = {ASSET_TAGS = (); }; };
+		F68ECF7B1BBE59E500092AB4 /* icon-food-1.png in Resources */ = {isa = PBXBuildFile; fileRef = F68ECF761BBE59E500092AB4 /* icon-food-1.png */; settings = {ASSET_TAGS = (); }; };
+		F68ECF7C1BBE59E500092AB4 /* icon-food-2.png in Resources */ = {isa = PBXBuildFile; fileRef = F68ECF771BBE59E500092AB4 /* icon-food-2.png */; settings = {ASSET_TAGS = (); }; };
+		F68ECF7D1BBE59E500092AB4 /* icon-food-3.png in Resources */ = {isa = PBXBuildFile; fileRef = F68ECF781BBE59E500092AB4 /* icon-food-3.png */; settings = {ASSET_TAGS = (); }; };
+		F68ECF7E1BBE59E500092AB4 /* icon-food-4.png in Resources */ = {isa = PBXBuildFile; fileRef = F68ECF791BBE59E500092AB4 /* icon-food-4.png */; settings = {ASSET_TAGS = (); }; };
+		F68ECF7F1BBE59E500092AB4 /* icon-food-5.png in Resources */ = {isa = PBXBuildFile; fileRef = F68ECF7A1BBE59E500092AB4 /* icon-food-5.png */; settings = {ASSET_TAGS = (); }; };
 		F68F44861BBE15D900708F2E /* cD1mMjhjMTAyOTBjYjRlYWRlZGE4ZjJlMDg0OWI5NjZlMiZnPWY2ZDljYTlkZjcyMjkxNTIwNDAxM2U5Yjk5YTc1MDg1.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = F68F44851BBE15D900708F2E /* cD1mMjhjMTAyOTBjYjRlYWRlZGE4ZjJlMDg0OWI5NjZlMiZnPWY2ZDljYTlkZjcyMjkxNTIwNDAxM2U5Yjk5YTc1MDg1.jpeg */; settings = {ASSET_TAGS = (); }; };
 		F68F44881BBE15EB00708F2E /* lunch-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = F68F44871BBE15EB00708F2E /* lunch-logo.png */; settings = {ASSET_TAGS = (); }; };
 		F6DEE86C1BBDBA1B00060640 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F6DEE86B1BBDBA1B00060640 /* main.m */; };
@@ -46,6 +55,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F68ECF6E1BBE490B00092AB4 /* default-user.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "default-user.png"; sourceTree = "<group>"; };
+		F68ECF701BBE4D3A00092AB4 /* icon-people.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-people.png"; sourceTree = "<group>"; };
+		F68ECF721BBE4E4D00092AB4 /* icon-globe.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-globe.png"; sourceTree = "<group>"; };
+		F68ECF741BBE4F6000092AB4 /* icon-logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-logo.png"; sourceTree = "<group>"; };
+		F68ECF761BBE59E500092AB4 /* icon-food-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-food-1.png"; sourceTree = "<group>"; };
+		F68ECF771BBE59E500092AB4 /* icon-food-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-food-2.png"; sourceTree = "<group>"; };
+		F68ECF781BBE59E500092AB4 /* icon-food-3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-food-3.png"; sourceTree = "<group>"; };
+		F68ECF791BBE59E500092AB4 /* icon-food-4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-food-4.png"; sourceTree = "<group>"; };
+		F68ECF7A1BBE59E500092AB4 /* icon-food-5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-food-5.png"; sourceTree = "<group>"; };
 		F68F44851BBE15D900708F2E /* cD1mMjhjMTAyOTBjYjRlYWRlZGE4ZjJlMDg0OWI5NjZlMiZnPWY2ZDljYTlkZjcyMjkxNTIwNDAxM2U5Yjk5YTc1MDg1.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = cD1mMjhjMTAyOTBjYjRlYWRlZGE4ZjJlMDg0OWI5NjZlMiZnPWY2ZDljYTlkZjcyMjkxNTIwNDAxM2U5Yjk5YTc1MDg1.jpeg; sourceTree = "<group>"; };
 		F68F44871BBE15EB00708F2E /* lunch-logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "lunch-logo.png"; sourceTree = "<group>"; };
 		F6DEE8671BBDBA1B00060640 /* Lunch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lunch.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -113,6 +131,15 @@
 		649AB6311BBE0DA4001F7014 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				F68ECF761BBE59E500092AB4 /* icon-food-1.png */,
+				F68ECF771BBE59E500092AB4 /* icon-food-2.png */,
+				F68ECF781BBE59E500092AB4 /* icon-food-3.png */,
+				F68ECF791BBE59E500092AB4 /* icon-food-4.png */,
+				F68ECF7A1BBE59E500092AB4 /* icon-food-5.png */,
+				F68ECF741BBE4F6000092AB4 /* icon-logo.png */,
+				F68ECF721BBE4E4D00092AB4 /* icon-globe.png */,
+				F68ECF701BBE4D3A00092AB4 /* icon-people.png */,
+				F68ECF6E1BBE490B00092AB4 /* default-user.png */,
 				F68F44871BBE15EB00708F2E /* lunch-logo.png */,
 				F68F44851BBE15D900708F2E /* cD1mMjhjMTAyOTBjYjRlYWRlZGE4ZjJlMDg0OWI5NjZlMiZnPWY2ZDljYTlkZjcyMjkxNTIwNDAxM2U5Yjk5YTc1MDg1.jpeg */,
 			);
@@ -321,10 +348,19 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F68ECF7D1BBE59E500092AB4 /* icon-food-3.png in Resources */,
+				F68ECF7C1BBE59E500092AB4 /* icon-food-2.png in Resources */,
+				F68ECF731BBE4E4D00092AB4 /* icon-globe.png in Resources */,
 				F6DEE87A1BBDBA1B00060640 /* LaunchScreen.storyboard in Resources */,
+				F68ECF7E1BBE59E500092AB4 /* icon-food-4.png in Resources */,
 				F6DEE8771BBDBA1B00060640 /* Assets.xcassets in Resources */,
+				F68ECF6F1BBE490B00092AB4 /* default-user.png in Resources */,
+				F68ECF711BBE4D3A00092AB4 /* icon-people.png in Resources */,
 				F68F44881BBE15EB00708F2E /* lunch-logo.png in Resources */,
+				F68ECF751BBE4F6000092AB4 /* icon-logo.png in Resources */,
 				F68F44861BBE15D900708F2E /* cD1mMjhjMTAyOTBjYjRlYWRlZGE4ZjJlMDg0OWI5NjZlMiZnPWY2ZDljYTlkZjcyMjkxNTIwNDAxM2U5Yjk5YTc1MDg1.jpeg in Resources */,
+				F68ECF7B1BBE59E500092AB4 /* icon-food-1.png in Resources */,
+				F68ECF7F1BBE59E500092AB4 /* icon-food-5.png in Resources */,
 				F6DEE8751BBDBA1B00060640 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
