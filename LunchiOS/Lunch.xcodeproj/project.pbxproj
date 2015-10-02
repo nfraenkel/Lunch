@@ -34,8 +34,8 @@
 		F6DEE8BE1BBDCFE400060640 /* FeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F6DEE8BD1BBDCFE400060640 /* FeedViewController.m */; };
 		F6DEE8C11BBDEB7E00060640 /* JoinButton.m in Sources */ = {isa = PBXBuildFile; fileRef = F6DEE8C01BBDEB7E00060640 /* JoinButton.m */; };
 		F6DEE8C51BBDF65900060640 /* GetLoginCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F6DEE8C41BBDF65900060640 /* GetLoginCommand.m */; };
-		F6DEE8C81BBDFA7400060640 /* ConfirmationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F6DEE8C71BBDFA7400060640 /* ConfirmationViewController.m */; };
 		F6F580A91BBE757B00DDC328 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = F6F580A81BBE757B00DDC328 /* background.png */; settings = {ASSET_TAGS = (); }; };
+		F6F580AC1BBE90B900DDC328 /* TutorialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F6F580AB1BBE90B800DDC328 /* TutorialViewController.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -100,9 +100,9 @@
 		F6DEE8C21BBDF5CC00060640 /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		F6DEE8C31BBDF65900060640 /* GetLoginCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetLoginCommand.h; sourceTree = "<group>"; };
 		F6DEE8C41BBDF65900060640 /* GetLoginCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetLoginCommand.m; sourceTree = "<group>"; };
-		F6DEE8C61BBDFA7400060640 /* ConfirmationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfirmationViewController.h; sourceTree = "<group>"; };
-		F6DEE8C71BBDFA7400060640 /* ConfirmationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfirmationViewController.m; sourceTree = "<group>"; };
 		F6F580A81BBE757B00DDC328 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
+		F6F580AA1BBE90B800DDC328 /* TutorialViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TutorialViewController.h; sourceTree = "<group>"; };
+		F6F580AB1BBE90B800DDC328 /* TutorialViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TutorialViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -183,10 +183,10 @@
 				F6DEE8B11BBDC37300060640 /* LunchSingleton.m */,
 				F6DEE8701BBDBA1B00060640 /* ViewController.h */,
 				F6DEE8711BBDBA1B00060640 /* ViewController.m */,
-				F6DEE8C61BBDFA7400060640 /* ConfirmationViewController.h */,
-				F6DEE8C71BBDFA7400060640 /* ConfirmationViewController.m */,
 				F6DEE8BC1BBDCFE400060640 /* FeedViewController.h */,
 				F6DEE8BD1BBDCFE400060640 /* FeedViewController.m */,
+				F6F580AA1BBE90B800DDC328 /* TutorialViewController.h */,
+				F6F580AB1BBE90B800DDC328 /* TutorialViewController.m */,
 				F6DEE8731BBDBA1B00060640 /* Main.storyboard */,
 				F6DEE8761BBDBA1B00060640 /* Assets.xcassets */,
 				F6DEE8781BBDBA1B00060640 /* LaunchScreen.storyboard */,
@@ -392,12 +392,12 @@
 			files = (
 				F6DEE8AC1BBDC35300060640 /* User.m in Sources */,
 				F6DEE8721BBDBA1B00060640 /* ViewController.m in Sources */,
+				F6F580AC1BBE90B900DDC328 /* TutorialViewController.m in Sources */,
 				F6DEE8BB1BBDCBF400060640 /* Choice.m in Sources */,
 				F6DEE8C11BBDEB7E00060640 /* JoinButton.m in Sources */,
 				F6DEE8B81BBDC9AD00060640 /* GetChoicesCommand.m in Sources */,
 				F6DEE8AF1BBDC35E00060640 /* Venue.m in Sources */,
 				F6DEE8BE1BBDCFE400060640 /* FeedViewController.m in Sources */,
-				F6DEE8C81BBDFA7400060640 /* ConfirmationViewController.m in Sources */,
 				F6DEE86F1BBDBA1B00060640 /* AppDelegate.m in Sources */,
 				F6DEE8B21BBDC37300060640 /* LunchSingleton.m in Sources */,
 				F6DEE8C51BBDF65900060640 /* GetLoginCommand.m in Sources */,

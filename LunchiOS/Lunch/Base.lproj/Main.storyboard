@@ -82,12 +82,24 @@
                         <outlet property="emailTextField" destination="qa8-ZY-6Zu" id="H5I-nJ-u2M"/>
                         <outlet property="letsGoButton" destination="8NL-Ls-gpJ" id="SZR-w0-WoC"/>
                         <outlet property="passwordTextField" destination="wVm-yd-EAc" id="1KT-Q1-6w3"/>
-                        <segue destination="7bU-ie-mAw" kind="showDetail" identifier="showMainFeed" id="k4Y-o6-wGx"/>
+                        <segue destination="cxN-Gg-Usb" kind="showDetail" identifier="showTutorial" id="ryc-MS-nbS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-249" y="366.75"/>
+        </scene>
+        <!--Tutorial View Controller-->
+        <scene sceneID="1eM-2J-735">
+            <objects>
+                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="pageCurl" navigationOrientation="horizontal" spineLocation="min" id="cxN-Gg-Usb" customClass="TutorialViewController" sceneMemberID="viewController">
+                    <connections>
+                        <segue destination="7bU-ie-mAw" kind="showDetail" identifier="showMainFeed" id="Ykn-U4-B2u"/>
+                    </connections>
+                </pageViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4Ig-Um-2sg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="591" y="138.75"/>
         </scene>
         <!--Feed View Controller-->
         <scene sceneID="kBC-5G-96w">
@@ -136,30 +148,11 @@
                     <navigationItem key="navigationItem" id="UZK-MW-Zix"/>
                     <connections>
                         <outlet property="segmentedControl" destination="iu8-Hp-mLZ" id="DvN-9Q-bPb"/>
-                        <segue destination="1WO-UM-0Q5" kind="show" identifier="showConfirmation" id="fot-mY-fwn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1NO-dR-qrW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="930" y="498"/>
-        </scene>
-        <!--Confirmation View Controller-->
-        <scene sceneID="06a-8p-aBx">
-            <objects>
-                <viewController id="1WO-UM-0Q5" customClass="ConfirmationViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="LHB-9X-Ghl"/>
-                        <viewControllerLayoutGuide type="bottom" id="1DA-ae-uDj"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="laq-E8-y0O">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="OzB-1e-MYx" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1986" y="446.25"/>
+            <point key="canvasLocation" x="1680" y="607.5"/>
         </scene>
     </scenes>
     <resources>
