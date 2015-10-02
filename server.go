@@ -160,9 +160,9 @@ type Venue struct {
 func (v *Venue) Create() error {
 	return server.db.QueryRow(`
 		INSERT INTO venues 
-			(venue_name, venue_location, venue_type, venue_distance, venue_created)
-			VALUES ($1, $2, $3, $4, $5) RETURNING venue_id
-		`, v.Name, v.Location, v.Type, v.Distance, time.Now().UTC()).Scan(&v.Id)
+			(venue_name, venue_photo, venue_location, venue_type, venue_distance, venue_created)
+			VALUES ($1, $2, $3, $4, $5, $6) RETURNING venue_id
+		`, v.Name, v.Photo, v.Location, v.Type, v.Distance, time.Now().UTC()).Scan(&v.Id)
 }
 
 type Choice struct {
