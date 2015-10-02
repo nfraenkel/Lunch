@@ -21,6 +21,8 @@
     NSInteger totalSize;
     CGRect screenRect;
     CGFloat screenWidth, screenHeight;
+    
+    BOOL confirmationScreen;
 }
 
 @property (strong, nonatomic) LunchSingleton *singleton;

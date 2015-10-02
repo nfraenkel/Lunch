@@ -103,12 +103,22 @@
     
     if (selectedSegment == 0) {
         //toggle the correct view to be visible
-        [sv setHidden:NO];
+        if (confirmationScreen) {
+            [cv setHidden:NO];
+        }
+        else {
+            [sv setHidden:NO];
+        }
         [tv setHidden:YES];
     }
     else{
         //toggle the correct view to be visible
-        [sv setHidden:YES];
+        if (confirmationScreen) {
+            [cv setHidden:YES];
+        }
+        else {
+            [sv setHidden:YES];
+        }
         [tv setHidden:NO];
     }
 }
@@ -198,12 +208,14 @@
 //    [self performSegueWithIdentifier:@"showConfirmation" sender:self];
     [sv setHidden:YES];
     [cv setHidden:NO];
+    confirmationScreen = YES;
 }
 
 -(void)cancelLunch:(UIButton *)sender {
     NSLog(@"CANCELLING");
     [sv setHidden:NO];
     [cv setHidden:YES];
+    confirmationScreen = NO;
 }
 
 -(void)reactToGetChoicesError:(NSError *)error {
