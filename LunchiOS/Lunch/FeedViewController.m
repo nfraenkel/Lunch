@@ -82,7 +82,7 @@
 
     CGRect dateLabelFrame = CGRectMake(0, 32, screenWidth, 20);
     UILabel *dateLabel = [[UILabel alloc] initWithFrame:dateLabelFrame];
-    [dateLabel setText:[NSString stringWithFormat:@"Thursday, October 1"]];
+    [dateLabel setText:[NSString stringWithFormat:@"Friday, October 2"]];
     dateLabel.textAlignment = NSTextAlignmentCenter;
     [dateLabel setTextColor:[UIColor whiteColor]];
     [dateLabel setFont:[UIFont fontWithName:@"HelveticaNeue" size:14.0f]];
@@ -127,17 +127,10 @@
     
     // CONFIRMATION VIEW
     cv = [[UIView alloc] initWithFrame:bigViewFrame];
-    cv.backgroundColor = [UIColor lightGrayColor];
-    UIButton *cancelButton = [[UIButton alloc] initWithFrame:CGRectMake(0, screenHeight - 30 - 80, screenWidth, 40)];
-    [cancelButton setTitle:@"go somewhere else?" forState:UIControlStateNormal];
-    [cancelButton setBackgroundColor:[UIColor orangeColor]];
-    [cancelButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [cancelButton addTarget:self
-                     action:@selector(cancelLunch:)
-           forControlEvents:UIControlEventTouchUpInside];
-    [cv addSubview:cancelButton];
     cv.hidden = YES;
     
+
+    // END
     [self.view addSubview:tv];
     [self.view addSubview:cv];
 
@@ -231,8 +224,8 @@
         UIColor *darkOrange = [UIColor colorWithRed:215.0f/255.0f green:80.0f/255.0f blue:30.0f/255.0f alpha:1.0f];
         CGRect buttonFrame = CGRectMake(rowViewFrame.size.width - 60, 87.5, 40, 30);
         JoinButton *joinButton = [[JoinButton alloc] initWithFrame:buttonFrame];
-        joinButton.venue = NULL;
-        joinButton.otherUsers = NULL;
+        joinButton.venue = ch.venue;
+        joinButton.otherUsers = ch.users;
         [joinButton setTitle:@"Join" forState:UIControlStateNormal];
         [joinButton setTitleColor:darkOrange forState:UIControlStateNormal];
         [joinButton.titleLabel setFont:[UIFont fontWithName:@"HelveticaNeue" size:12.0f]];
@@ -277,11 +270,130 @@
 */
 
 -(void)joinLunch:(UIButton *)sender {
-    NSLog(@"sender: %@", sender);
-//    [self performSegueWithIdentifier:@"showConfirmation" sender:self];
+    JoinButton *jb = (JoinButton*)sender;
+    
+    self.singleton.currentVenue = jb.venue;
+    self.singleton.otherUsers = jb.otherUsers;
+    
+    [self makeConfirmationView];
+    
     [sv setHidden:YES];
     [cv setHidden:NO];
     confirmationScreen = YES;
+}
+
+-(void)makeConfirmationView {
+    for (UIView *subview in [cv subviews]) {
+        [subview removeFromSuperview];
+    }
+    
+    UIScrollView *scrolley = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, screenWidth, screenHeight - 80)];
+    scrolley.delegate = self;
+    
+    NSInteger runningTotal = 0;
+    
+    NSInteger margin = 60;
+    NSInteger buttonHeight = 60;
+    UIColor *darkOrange = [UIColor colorWithRed:215.0f/255.0f green:80.0f/255.0f blue:30.0f/255.0f alpha:1.0f];
+    
+    Venue *venue = self.singleton.currentVenue;
+    NSInteger venueImageSize = 60;
+    UIImageView *venueImageView = [[UIImageView alloc] initWithFrame:CGRectMake((screenWidth - venueImageSize)/2, 40, venueImageSize, venueImageSize)];
+    [venueImageView setImage:[self imageFromURLString:venue.photoUrl]];
+    venueImageView.layer.cornerRadius = venueImageView.frame.size.height/2;
+    venueImageView.layer.masksToBounds = YES;
+    [scrolley addSubview:venueImageView];
+    
+    // you're going to
+    UILabel *goingWithLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 120, screenWidth, 30)];
+    [goingWithLabel setText:@"You're going to"];
+    [goingWithLabel setFont:[UIFont fontWithName:@"HelveticaNeue" size:24.0f]];
+    [goingWithLabel setTextColor:[UIColor lightGrayColor]];
+    [goingWithLabel setTextAlignment:NSTextAlignmentCenter];
+    [scrolley addSubview:goingWithLabel];
+    
+    // venue at 12:30
+    UILabel *venueLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 150, screenWidth, 30)];
+    [venueLabel setText:[NSString stringWithFormat:@"%@ at 12:30", venue.name]];
+    [venueLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Bold" size:24.0f]];
+    [venueLabel setTextAlignment:NSTextAlignmentCenter];
+    [scrolley addSubview:venueLabel];
+    runningTotal += venueLabel.frame.origin.y + venueLabel.frame.size.height + 20;
+    
+    if ([self.singleton.otherUsers count] == 0) {
+        UILabel *emptyStateLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, runningTotal + 20, screenWidth, 30)];
+        [emptyStateLabel setText:@"Tell your friends to join you!"];
+        emptyStateLabel.textAlignment = NSTextAlignmentCenter;
+        [emptyStateLabel setTextColor:[UIColor lightGrayColor]];
+        [emptyStateLabel setFont:[UIFont fontWithName:@"HelveticaNeue" size:20.0f]];
+        [scrolley addSubview:emptyStateLabel];
+        
+        runningTotal = emptyStateLabel.frame.origin.y + emptyStateLabel.frame.size.height + 40;
+    }
+    else {
+        UILabel *withLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 180, screenWidth, 30)];
+        [withLabel setText:@"with"];
+        [withLabel setFont:[UIFont fontWithName:@"HelveticaNeue" size:24.0f]];
+        [withLabel setTextAlignment:NSTextAlignmentCenter];
+        [withLabel setTextColor:[UIColor lightGrayColor]];
+        [scrolley addSubview:withLabel];
+        runningTotal = withLabel.frame.origin.y + withLabel.frame.size.height + 20;
+        
+        NSInteger midpoint = screenWidth/2;
+        NSInteger height = 40;
+        for (User *u in self.singleton.otherUsers) {
+            UIImageView *userImageView = [[UIImageView alloc] initWithFrame:CGRectMake(midpoint - height - 20, runningTotal, height, height)];
+            [userImageView setImage:[self imageFromURLString:u.photoUrl]];
+            userImageView.layer.cornerRadius = userImageView.frame.size.height/2;
+            userImageView.layer.masksToBounds = YES;
+            
+            UILabel *userLabel = [[UILabel alloc] initWithFrame:CGRectMake(midpoint, runningTotal, midpoint, height)];
+            [userLabel setText:u.first];
+            [userLabel setFont:[UIFont fontWithName:@"HelveticaNeue" size:22.0f]];
+            
+            [scrolley addSubview:userImageView];
+            [scrolley addSubview:userLabel];
+            
+            runningTotal += height + 20;
+        }
+    }
+    
+    runningTotal += 20;
+    
+    UIButton *openMapsButton = [[UIButton alloc] initWithFrame:CGRectMake(margin, runningTotal, screenWidth - (2*margin), buttonHeight)];
+    [openMapsButton setTitle:@"Open in Maps?" forState:UIControlStateNormal];
+    [openMapsButton setTitleColor:darkOrange forState:UIControlStateNormal];
+    openMapsButton.layer.cornerRadius = 5;
+    openMapsButton.layer.borderColor = darkOrange.CGColor;
+    openMapsButton.layer.borderWidth = 1.0f;
+    openMapsButton.layer.masksToBounds = YES;
+    [openMapsButton addTarget:self
+                       action:@selector(openInMaps:)
+             forControlEvents:UIControlEventTouchUpInside];
+    [scrolley addSubview:openMapsButton];
+    runningTotal += buttonHeight + 20;
+    
+    UIButton *cancelButton = [[UIButton alloc] initWithFrame:CGRectMake(margin, runningTotal, screenWidth - (2*margin), buttonHeight)];
+    [cancelButton setTitle:@"Go somewhere else?" forState:UIControlStateNormal];
+    [cancelButton setTitleColor:[UIColor colorWithWhite:0.8f alpha:1.0f] forState:UIControlStateNormal];
+    cancelButton.layer.cornerRadius = 5;
+    cancelButton.layer.borderColor = [UIColor colorWithWhite:0.8f alpha:1.0f].CGColor;
+    cancelButton.layer.borderWidth = 1.0f;
+    cancelButton.layer.masksToBounds = YES;
+    [cancelButton addTarget:self
+                     action:@selector(cancelLunch:)
+           forControlEvents:UIControlEventTouchUpInside];
+    [scrolley addSubview:cancelButton];
+    runningTotal += buttonHeight + 40;
+
+    scrolley.contentSize = CGSizeMake(screenWidth, runningTotal);
+    
+    [cv addSubview:scrolley];
+
+}
+
+-(void)openInMaps:(UIButton *)sender {
+    NSLog(@"OPEN IN MAPS!!");
 }
 
 -(void)cancelLunch:(UIButton *)sender {

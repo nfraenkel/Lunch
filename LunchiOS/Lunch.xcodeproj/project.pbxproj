@@ -35,6 +35,7 @@
 		F6DEE8C11BBDEB7E00060640 /* JoinButton.m in Sources */ = {isa = PBXBuildFile; fileRef = F6DEE8C01BBDEB7E00060640 /* JoinButton.m */; };
 		F6DEE8C51BBDF65900060640 /* GetLoginCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F6DEE8C41BBDF65900060640 /* GetLoginCommand.m */; };
 		F6DEE8C81BBDFA7400060640 /* ConfirmationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F6DEE8C71BBDFA7400060640 /* ConfirmationViewController.m */; };
+		F6F580A91BBE757B00DDC328 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = F6F580A81BBE757B00DDC328 /* background.png */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -101,6 +102,7 @@
 		F6DEE8C41BBDF65900060640 /* GetLoginCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetLoginCommand.m; sourceTree = "<group>"; };
 		F6DEE8C61BBDFA7400060640 /* ConfirmationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfirmationViewController.h; sourceTree = "<group>"; };
 		F6DEE8C71BBDFA7400060640 /* ConfirmationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfirmationViewController.m; sourceTree = "<group>"; };
+		F6F580A81BBE757B00DDC328 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,6 +133,7 @@
 		649AB6311BBE0DA4001F7014 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				F6F580A81BBE757B00DDC328 /* background.png */,
 				F68ECF761BBE59E500092AB4 /* icon-food-1.png */,
 				F68ECF771BBE59E500092AB4 /* icon-food-2.png */,
 				F68ECF781BBE59E500092AB4 /* icon-food-3.png */,
@@ -349,6 +352,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F68ECF7D1BBE59E500092AB4 /* icon-food-3.png in Resources */,
+				F6F580A91BBE757B00DDC328 /* background.png in Resources */,
 				F68ECF7C1BBE59E500092AB4 /* icon-food-2.png in Resources */,
 				F68ECF731BBE4E4D00092AB4 /* icon-globe.png in Resources */,
 				F6DEE87A1BBDBA1B00060640 /* LaunchScreen.storyboard in Resources */,

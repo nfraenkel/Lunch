@@ -21,6 +21,13 @@
     // Do any additional setup after loading the view, typically from a nib.
     
     self.singleton = [LunchSingleton sharedDataModel];
+    
+    self.emailTextField.borderStyle = UITextBorderStyleRoundedRect;
+    self.passwordTextField.borderStyle = UITextBorderStyleRoundedRect;
+    
+    self.letsGoButton.layer.cornerRadius = 5;
+    self.letsGoButton.layer.masksToBounds = YES;
+
 }
 
 - (void)didReceiveMemoryWarning {

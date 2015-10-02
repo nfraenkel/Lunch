@@ -10,6 +10,8 @@
 
 @implementation LunchSingleton
 
+@synthesize user, otherUsers, currentVenue;
+
 static LunchSingleton *sharedDataModel = nil;
 
 + (LunchSingleton *) sharedDataModel {

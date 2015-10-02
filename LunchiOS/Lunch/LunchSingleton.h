@@ -8,10 +8,13 @@
 
 #import <Foundation/Foundation.h>
 #import "User.h"
+#import "Venue.h"
 
 @interface LunchSingleton : NSObject
 
 @property (nonatomic, strong) User *user;
+@property (nonatomic, strong) Venue *currentVenue;
+@property (nonatomic, strong) NSArray *otherUsers;
 
 + (LunchSingleton *) sharedDataModel;
 
