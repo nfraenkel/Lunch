@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>3EE525D7-B0FC-43C5-995F-BA67834D3D57</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Lunch</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>16129BCD88FC375C6077D3E33C6E84486F4D4396</key>
+		<string>https://github.com/nfraenkel/lunch.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>LunchiOS/Lunch.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>16129BCD88FC375C6077D3E33C6E84486F4D4396</key>
+		<string>../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/nfraenkel/lunch.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>16129BCD88FC375C6077D3E33C6E84486F4D4396</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>16129BCD88FC375C6077D3E33C6E84486F4D4396</string>
+			<key>IDESourceControlWCCName</key>
+			<string>lunch</string>
+		</dict>
+	</array>
+</dict>
+</plist>

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		649AB6331BBE0E70001F7014 /* cD1mMjhjMTAyOTBjYjRlYWRlZGE4ZjJlMDg0OWI5NjZlMiZnPWY2ZDljYTlkZjcyMjkxNTIwNDAxM2U5Yjk5YTc1MDg1.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 649AB6321BBE0E70001F7014 /* cD1mMjhjMTAyOTBjYjRlYWRlZGE4ZjJlMDg0OWI5NjZlMiZnPWY2ZDljYTlkZjcyMjkxNTIwNDAxM2U5Yjk5YTc1MDg1.jpeg */; };
+		649AB6371BBE109F001F7014 /* lunch-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 649AB6361BBE109F001F7014 /* lunch-logo.png */; };
 		F6DEE86C1BBDBA1B00060640 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F6DEE86B1BBDBA1B00060640 /* main.m */; };
 		F6DEE86F1BBDBA1B00060640 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F6DEE86E1BBDBA1B00060640 /* AppDelegate.m */; };
 		F6DEE8721BBDBA1B00060640 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F6DEE8711BBDBA1B00060640 /* ViewController.m */; };
@@ -15,15 +17,15 @@
 		F6DEE87A1BBDBA1B00060640 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F6DEE8781BBDBA1B00060640 /* LaunchScreen.storyboard */; };
 		F6DEE8851BBDBA1B00060640 /* LunchTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F6DEE8841BBDBA1B00060640 /* LunchTests.m */; };
 		F6DEE8901BBDBA1B00060640 /* LunchUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = F6DEE88F1BBDBA1B00060640 /* LunchUITests.m */; };
-		F6DEE8AC1BBDC35300060640 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = F6DEE8AB1BBDC35300060640 /* User.m */; settings = {ASSET_TAGS = (); }; };
-		F6DEE8AF1BBDC35E00060640 /* Venue.m in Sources */ = {isa = PBXBuildFile; fileRef = F6DEE8AE1BBDC35E00060640 /* Venue.m */; settings = {ASSET_TAGS = (); }; };
-		F6DEE8B21BBDC37300060640 /* LunchSingleton.m in Sources */ = {isa = PBXBuildFile; fileRef = F6DEE8B11BBDC37300060640 /* LunchSingleton.m */; settings = {ASSET_TAGS = (); }; };
-		F6DEE8B81BBDC9AD00060640 /* GetChoicesCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F6DEE8B71BBDC9AD00060640 /* GetChoicesCommand.m */; settings = {ASSET_TAGS = (); }; };
-		F6DEE8BB1BBDCBF400060640 /* Choice.m in Sources */ = {isa = PBXBuildFile; fileRef = F6DEE8BA1BBDCBF400060640 /* Choice.m */; settings = {ASSET_TAGS = (); }; };
-		F6DEE8BE1BBDCFE400060640 /* FeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F6DEE8BD1BBDCFE400060640 /* FeedViewController.m */; settings = {ASSET_TAGS = (); }; };
-		F6DEE8C11BBDEB7E00060640 /* JoinButton.m in Sources */ = {isa = PBXBuildFile; fileRef = F6DEE8C01BBDEB7E00060640 /* JoinButton.m */; settings = {ASSET_TAGS = (); }; };
-		F6DEE8C51BBDF65900060640 /* GetLoginCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F6DEE8C41BBDF65900060640 /* GetLoginCommand.m */; settings = {ASSET_TAGS = (); }; };
-		F6DEE8C81BBDFA7400060640 /* ConfirmationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F6DEE8C71BBDFA7400060640 /* ConfirmationViewController.m */; settings = {ASSET_TAGS = (); }; };
+		F6DEE8AC1BBDC35300060640 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = F6DEE8AB1BBDC35300060640 /* User.m */; };
+		F6DEE8AF1BBDC35E00060640 /* Venue.m in Sources */ = {isa = PBXBuildFile; fileRef = F6DEE8AE1BBDC35E00060640 /* Venue.m */; };
+		F6DEE8B21BBDC37300060640 /* LunchSingleton.m in Sources */ = {isa = PBXBuildFile; fileRef = F6DEE8B11BBDC37300060640 /* LunchSingleton.m */; };
+		F6DEE8B81BBDC9AD00060640 /* GetChoicesCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F6DEE8B71BBDC9AD00060640 /* GetChoicesCommand.m */; };
+		F6DEE8BB1BBDCBF400060640 /* Choice.m in Sources */ = {isa = PBXBuildFile; fileRef = F6DEE8BA1BBDCBF400060640 /* Choice.m */; };
+		F6DEE8BE1BBDCFE400060640 /* FeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F6DEE8BD1BBDCFE400060640 /* FeedViewController.m */; };
+		F6DEE8C11BBDEB7E00060640 /* JoinButton.m in Sources */ = {isa = PBXBuildFile; fileRef = F6DEE8C01BBDEB7E00060640 /* JoinButton.m */; };
+		F6DEE8C51BBDF65900060640 /* GetLoginCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F6DEE8C41BBDF65900060640 /* GetLoginCommand.m */; };
+		F6DEE8C81BBDFA7400060640 /* ConfirmationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F6DEE8C71BBDFA7400060640 /* ConfirmationViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +46,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		649AB6321BBE0E70001F7014 /* cD1mMjhjMTAyOTBjYjRlYWRlZGE4ZjJlMDg0OWI5NjZlMiZnPWY2ZDljYTlkZjcyMjkxNTIwNDAxM2U5Yjk5YTc1MDg1.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = cD1mMjhjMTAyOTBjYjRlYWRlZGE4ZjJlMDg0OWI5NjZlMiZnPWY2ZDljYTlkZjcyMjkxNTIwNDAxM2U5Yjk5YTc1MDg1.jpeg; path = ../../../Desktop/Lunch/_Assets/Illustrations/cD1mMjhjMTAyOTBjYjRlYWRlZGE4ZjJlMDg0OWI5NjZlMiZnPWY2ZDljYTlkZjcyMjkxNTIwNDAxM2U5Yjk5YTc1MDg1.jpeg; sourceTree = "<group>"; };
+		649AB6361BBE109F001F7014 /* lunch-logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "lunch-logo.png"; path = "../../../Desktop/Lunch/_Assets/lunch-logo.png"; sourceTree = "<group>"; };
 		F6DEE8671BBDBA1B00060640 /* Lunch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lunch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F6DEE86B1BBDBA1B00060640 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		F6DEE86D1BBDBA1B00060640 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -106,6 +110,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		649AB6311BBE0DA4001F7014 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				649AB6361BBE109F001F7014 /* lunch-logo.png */,
+				649AB6321BBE0E70001F7014 /* cD1mMjhjMTAyOTBjYjRlYWRlZGE4ZjJlMDg0OWI5NjZlMiZnPWY2ZDljYTlkZjcyMjkxNTIwNDAxM2U5Yjk5YTc1MDg1.jpeg */,
+			);
+			name = Images;
+			sourceTree = "<group>";
+		};
 		F6DEE85E1BBDBA1B00060640 = {
 			isa = PBXGroup;
 			children = (
@@ -129,6 +142,7 @@
 		F6DEE8691BBDBA1B00060640 /* Lunch */ = {
 			isa = PBXGroup;
 			children = (
+				649AB6311BBE0DA4001F7014 /* Images */,
 				F6DEE8B51BBDC99500060640 /* DataAccess */,
 				F6DEE89E1BBDBF6C00060640 /* Models */,
 				F6DEE86D1BBDBA1B00060640 /* AppDelegate.h */,
@@ -309,6 +323,8 @@
 			files = (
 				F6DEE87A1BBDBA1B00060640 /* LaunchScreen.storyboard in Resources */,
 				F6DEE8771BBDBA1B00060640 /* Assets.xcassets in Resources */,
+				649AB6371BBE109F001F7014 /* lunch-logo.png in Resources */,
+				649AB6331BBE0E70001F7014 /* cD1mMjhjMTAyOTBjYjRlYWRlZGE4ZjJlMDg0OWI5NjZlMiZnPWY2ZDljYTlkZjcyMjkxNTIwNDAxM2U5Yjk5YTc1MDg1.jpeg in Resources */,
 				F6DEE8751BBDBA1B00060640 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -571,6 +587,7 @@
 				F6DEE8961BBDBA1B00060640 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F6DEE8971BBDBA1B00060640 /* Build configuration list for PBXNativeTarget "LunchTests" */ = {
 			isa = XCConfigurationList;
@@ -579,6 +596,7 @@
 				F6DEE8991BBDBA1B00060640 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F6DEE89A1BBDBA1B00060640 /* Build configuration list for PBXNativeTarget "LunchUITests" */ = {
 			isa = XCConfigurationList;
@@ -587,6 +605,7 @@
 				F6DEE89C1BBDBA1B00060640 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
