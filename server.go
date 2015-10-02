@@ -147,6 +147,26 @@ func GetUser(email string) (*User, error) {
 	return u, err
 }
 
+func (u *User) Create() error {
+	return server.db.QueryRow(`
+		INSERT INTO users 
+			(user_first_name, user_last_name, user_photo, user_email, user_created)
+			VALUES ($1, $2, $3, $4, $5) RETURNING user_id
+		`, u.First, u.Last, u.Photo, u.Email, time.Now().UTC()).Scan(&u.Id)
+}
+
+func (u *User) CreateIfDoesntExist() error {
+	var count int
+	err := server.db.QueryRow(`SELECT count(*) FROM users WHERE user_email = $1`, u.Email).Scan(&count)
+	if err != nil {
+		return err
+	}
+	if count > 0 {
+		return nil
+	}
+	return u.Create()
+}
+
 type Venue struct {
 	Id       int       `db:"venue_id" param:"venue_id" json:"id"`
 	Name     string    `db:"venue_name" param:"venue_name" json:"name"`
@@ -163,6 +183,18 @@ func (v *Venue) Create() error {
 			(venue_name, venue_photo, venue_location, venue_type, venue_distance, venue_created)
 			VALUES ($1, $2, $3, $4, $5, $6) RETURNING venue_id
 		`, v.Name, v.Photo, v.Location, v.Type, v.Distance, time.Now().UTC()).Scan(&v.Id)
+}
+
+func (v *Venue) CreateIfDoesntExist() error {
+	var count int
+	err := server.db.QueryRow(`SELECT count(*) FROM venues WHERE venue_name = $1`, v.Name).Scan(&count)
+	if err != nil {
+		return err
+	}
+	if count > 0 {
+		return nil
+	}
+	return v.Create()
 }
 
 type Choice struct {
@@ -199,6 +231,30 @@ func Login(c web.C, w http.ResponseWriter, r *http.Request) (int, error) {
 		return http.StatusInternalServerError, err
 	}
 	return respond(w, u)
+}
+
+func GetUsers(c web.C, w http.ResponseWriter, r *http.Request) (int, error) {
+	var buf []byte
+	getUsersSql := `
+		SELECT json_agg(x) from (
+			SELECT
+				u.user_id as id,
+				u.user_first_name as first_name,
+				u.user_last_name as last_name,
+				u.user_photo as photo
+			FROM users u
+		) x;
+	`
+	rows, err := server.db.Query(getUsersSql)
+	if err != nil {
+		return http.StatusInternalServerError, err
+	}
+	for rows.Next() {
+		rows.Scan(&buf)
+	}
+	w.Header().Set("Content-Type", "application/json")
+	w.Write(buf)
+	return http.StatusOK, nil
 }
 
 func GetVenuesWithChoices(c web.C, w http.ResponseWriter, r *http.Request) (int, error) {
@@ -248,6 +304,7 @@ func hello(c web.C, w http.ResponseWriter, r *http.Request) (int, error) {
 
 func PopulateDb(c web.C, w http.ResponseWriter, r *http.Request) (int, error) {
 	populateDb()
+	populateDbWithUsers()
 	return http.StatusOK, nil
 }
 
@@ -298,6 +355,7 @@ func main() {
 	goji.Get("/hello/:name", ApiHandler(hello))
 	goji.Post("/api/login", ApiHandler(Login))
 	goji.Get("/api/venues", ApiHandler(GetVenuesWithChoices))
+	goji.Get("/api/users", ApiHandler(GetUsers))
 	goji.Post("/api/venues", ApiHandler(CreateVenue))
 	goji.Post("/api/choices", ApiHandler(CreateChoice))
 	goji.Post("/api/populate-db", ApiHandler(PopulateDb))
@@ -309,32 +367,62 @@ func Log(message string) {
 }
 
 func populateDb() {
-    csvfile, err := os.Open("venues.csv")
-    if err != nil {
-            fmt.Println(err)
-            return
-    }
-    defer csvfile.Close()
-    reader := csv.NewReader(csvfile)
-    reader.FieldsPerRecord = -1 // see the Reader struct information below
-    rawCSVdata, err := reader.ReadAll()
-    if err != nil {
-            fmt.Println(err)
-            return
-    }
-    for _, each := range rawCSVdata {
-    	v := &Venue{
-    		Name: each[1],
-    		Photo: each[5],
-    		Type: each[2],
-    		Distance: each[3],
-    		Location: "New York, NY",
-    	}
-    	err = v.Create()
-    	if err != nil {
-    		fmt.Println(err)
-    		return
-    	}
-        fmt.Printf("name : %s and pic : %s\n", each[1], each[5])
-    }
+	csvfile, err := os.Open("venues.csv")
+	if err != nil {
+			fmt.Println(err)
+			return
+	}
+	defer csvfile.Close()
+	reader := csv.NewReader(csvfile)
+	reader.FieldsPerRecord = -1 // see the Reader struct information below
+	rawCSVdata, err := reader.ReadAll()
+	if err != nil {
+			fmt.Println(err)
+			return
+	}
+	for _, each := range rawCSVdata {
+		v := &Venue{
+			Name: each[1],
+			Photo: each[5],
+			Type: each[2],
+			Distance: each[3],
+			Location: "New York, NY",
+		}
+		err = v.CreateIfDoesntExist()
+		if err != nil {
+			fmt.Println(err)
+			return
+		}
+		fmt.Printf("name : %s and pic : %s\n", each[1], each[5])
+	}
+}
+
+func populateDbWithUsers() {
+	csvfile, err := os.Open("users.csv")
+	if err != nil {
+			fmt.Println(err)
+			return
+	}
+	defer csvfile.Close()
+	reader := csv.NewReader(csvfile)
+	reader.FieldsPerRecord = -1 // see the Reader struct information below
+	rawCSVdata, err := reader.ReadAll()
+	if err != nil {
+			fmt.Println(err)
+			return
+	}
+	for _, each := range rawCSVdata {
+		u := &User{
+			First: each[1],
+			Last: each[2],
+			Email: each[3],
+			Photo: each[4],
+		}
+		err = u.CreateIfDoesntExist()
+		if err != nil {
+			fmt.Println(err)
+			return
+		}
+		fmt.Printf("name : %s and pic : %s\n", each[1], each[4])
+	}
 }
