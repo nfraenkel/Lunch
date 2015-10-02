@@ -320,13 +320,17 @@ func GetVenuesWithChoices(c web.C, w http.ResponseWriter, r *http.Request) (int,
 
 func hello(c web.C, w http.ResponseWriter, r *http.Request) (int, error) {
 	fmt.Fprintf(w, "Hello, %s!", c.URLParams["name"])
-	return http.StatusOK, nil
+	return http.StatusOK, populateHistory()
 }
 
 func PopulateDb(c web.C, w http.ResponseWriter, r *http.Request) (int, error) {
 	populateDb()
 	populateDbWithUsers()
 	return http.StatusOK, nil
+}
+
+func PopulateHistory(c web.C, w http.ResponseWriter, r *http.Request) (int, error) {
+	return http.StatusOK, populateHistory()
 }
 
 func respond(w http.ResponseWriter, v interface{}) (int, error) {
@@ -371,6 +375,72 @@ func CreateChoice(c web.C, w http.ResponseWriter, r *http.Request) (int, error) 
 	return http.StatusOK, nil
 }
 
+func populateHistory() error {
+	now := time.Now().UTC()
+	yesterday := now.AddDate(0, 0, -1)
+	venueMap := make(map[int][]int)
+	choices := []Choice{}
+	err := server.db.Select(&choices, `SELECT * FROM choices WHERE choice_created > $1`, yesterday)
+	if err != nil {
+		return err
+	}
+	for _, c := range choices {
+		venueMap[c.Venue] = append(venueMap[c.Venue], c.User)
+	}
+	var venueName string
+	var userNames string
+	for venueId, users := range venueMap {
+		err = server.db.QueryRow(`SELECT venue_name FROM venues WHERE venue_id=$1`, venueId).Scan(&venueName)
+		if err != nil {
+			return err
+		}
+		q,args,err := sqlx.In(`SELECT string_agg(user_first_name, ', ') FROM users WHERE user_id IN (?)`, users)
+		if err != nil {
+			return err
+		}		
+		q = sqlx.Rebind(sqlx.DOLLAR,q)
+		err = server.db.QueryRow(q,args...).Scan(&userNames)
+		if err != nil {
+			return err
+		}		
+		text := userNames + " went to " + venueName
+		fmt.Println(text)
+		_, err = server.db.Exec(`INSERT INTO history (venue_id, history_text) VALUES ($1, $2)`, venueId, text)
+		if err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+func GetChoiceHistory(c web.C, w http.ResponseWriter, r *http.Request) (int, error) {
+	var buf []byte
+	getChoiceHistory := `
+		SELECT json_agg(x) from (
+			SELECT
+				h.history_id as id,
+				h.history_text as text,
+				(SELECT json_build_object(
+					'id', v.venue_id,
+					'name', v.venue_name,
+					'photo', v.venue_photo
+					) from venues v WHERE v.venue_id = h.venue_id
+				) AS venue
+			FROM history h
+		) x;
+	`
+	rows, err := server.db.Query(getChoiceHistory)
+	if err != nil {
+		return http.StatusInternalServerError, err
+	}
+	for rows.Next() {
+		rows.Scan(&buf)
+	}
+	w.Header().Set("Content-Type", "application/json")
+	w.Write(buf)
+	return http.StatusOK, nil
+}
+
 func main() {
 	initServer()
 	goji.Get("/hello/:name", ApiHandler(hello))
@@ -378,9 +448,11 @@ func main() {
 	goji.Get("/api/venues", ApiHandler(GetVenuesWithChoices))
 	goji.Get("/api/users", ApiHandler(GetUsers))
 	goji.Delete("/api/choices", ApiHandler(DeleteChoice))
+	goji.Get("/api/history", ApiHandler(GetChoiceHistory))
 	goji.Post("/api/venues", ApiHandler(CreateVenue))
 	goji.Post("/api/choices", ApiHandler(CreateChoice))
 	goji.Post("/api/populate-db", ApiHandler(PopulateDb))
+	goji.Post("/api/populate-history", ApiHandler(PopulateHistory))
 	goji.Serve()
 }
 
