@@ -3,6 +3,7 @@ package main
 import (
 	_ "database/sql"
 	"encoding/json"
+	"encoding/csv"
 	"flag"
 	"fmt"
 	"github.com/nfraenkel/lunch/Godeps/_workspace/src/github.com/jmoiron/sqlx"
@@ -151,6 +152,7 @@ type Venue struct {
 	Name     string    `db:"venue_name" param:"venue_name" json:"name"`
 	Photo    string    `db:"venue_photo" param:"venue_photo" json:"photo"`
 	Location string    `db:"venue_location" param:"venue_location" json:"location"`
+	Distance string    `db:"venue_distance" param:"venue_distance" json:"distance"`
 	Type     string    `db:"venue_type" param:"venue_type" json:"type"`
 	Created  time.Time `db:"venue_created" param:"venue_created" json:"created"`
 }
@@ -158,9 +160,9 @@ type Venue struct {
 func (v *Venue) Create() error {
 	return server.db.QueryRow(`
 		INSERT INTO venues 
-			(venue_name, venue_location, venue_type, venue_created)
-			VALUES ($1, $2, $3, $4) RETURNING venue_id
-		`, v.Name, v.Location, v.Type, time.Now().UTC()).Scan(&v.Id)
+			(venue_name, venue_location, venue_type, venue_distance, venue_created)
+			VALUES ($1, $2, $3, $4, $5) RETURNING venue_id
+		`, v.Name, v.Location, v.Type, v.Distance, time.Now().UTC()).Scan(&v.Id)
 }
 
 type Choice struct {
@@ -244,6 +246,11 @@ func hello(c web.C, w http.ResponseWriter, r *http.Request) (int, error) {
 	return http.StatusOK, nil
 }
 
+func PopulateDb(c web.C, w http.ResponseWriter, r *http.Request) (int, error) {
+	populateDb()
+	return http.StatusOK, nil
+}
+
 func respond(w http.ResponseWriter, v interface{}) (int, error) {
 	w.Header().Set("Content-Type", "application/json")
 	buf, err := json.Marshal(v)
@@ -293,9 +300,41 @@ func main() {
 	goji.Get("/api/venues", ApiHandler(GetVenuesWithChoices))
 	goji.Post("/api/venues", ApiHandler(CreateVenue))
 	goji.Post("/api/choices", ApiHandler(CreateChoice))
+	goji.Post("/api/populate-db", ApiHandler(PopulateDb))
 	goji.Serve()
 }
 
 func Log(message string) {
 	fmt.Println(message)
+}
+
+func populateDb() {
+    csvfile, err := os.Open("venues.csv")
+    if err != nil {
+            fmt.Println(err)
+            return
+    }
+    defer csvfile.Close()
+    reader := csv.NewReader(csvfile)
+    reader.FieldsPerRecord = -1 // see the Reader struct information below
+    rawCSVdata, err := reader.ReadAll()
+    if err != nil {
+            fmt.Println(err)
+            return
+    }
+    for _, each := range rawCSVdata {
+    	v := &Venue{
+    		Name: each[1],
+    		Photo: each[5],
+    		Type: each[2],
+    		Distance: each[3],
+    		Location: "New York, NY",
+    	}
+    	err = v.Create()
+    	if err != nil {
+    		fmt.Println(err)
+    		return
+    	}
+        fmt.Printf("name : %s and pic : %s\n", each[1], each[5])
+    }
 }
