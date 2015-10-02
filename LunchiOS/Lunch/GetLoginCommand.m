@@ -77,12 +77,13 @@
         [alert show];
         return;
     }
-
+    NSString *_id = [dictResponse objectForKey:@"id"];
     NSString *first = [dictResponse objectForKey:@"first_name"];
     NSString *last = [dictResponse objectForKey:@"last_name"];
     NSString *em = [dictResponse objectForKey:@"email"];
     NSString *photo = [dictResponse objectForKey:@"photo"];
-    User *newUser = [[User alloc] initWithFirst:first
+    User *newUser = [[User alloc] initWithId:_id
+                                       andFirst:first
                                         andLast:last
                                        andEmail:em
                                        andPhoto:photo];
