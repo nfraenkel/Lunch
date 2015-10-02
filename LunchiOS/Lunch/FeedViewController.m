@@ -133,6 +133,8 @@
         UIImage *image = [self imageFromURLString:ch.venue.photoUrl];
         UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(5, height1, 40, 40)];
         [imageView setImage:image];
+        imageView.layer.cornerRadius = imageView.frame.size.height/2;
+        imageView.layer.masksToBounds = YES;
         
         UILabel *nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(50, height1, screenWidth - 50, 20)];
         [nameLabel setText:ch.venue.name];
@@ -140,7 +142,7 @@
         UILabel *subHeaderLabel = [[UILabel alloc] initWithFrame:CGRectMake(50, height1 + 20, screenWidth - 50, 20)];
         NSString *category = ch.venue.type;
         NSString *distance = ch.venue.distance;
-        [subHeaderLabel setText:[NSString stringWithFormat:@"%@ -- %@ miles away", category, distance]];
+        [subHeaderLabel setText:[NSString stringWithFormat:@"%@ - %@ miles away", category, distance]];
         
         UIView *seperator = [[UIView alloc] initWithFrame:CGRectMake(5, rowHeight / 2, rowViewFrame.size.width - 10, 1)];
         [seperator setBackgroundColor:[UIColor lightGrayColor]];
@@ -209,14 +211,12 @@
 }
 
 -(void)reactToGetChoicesResponse:(NSMutableArray *)array {
-    NSLog(@"IN HERE!!!!! %@", array);
     self.choices = array;
     [self refreshUI];
 }
 
-- (UIImage *)imageFromURLString:(NSString *)urlString
-{
-    NSURL *imageURL = [NSURL URLWithString:@"http://example.com/demo.jpg"];
+- (UIImage *)imageFromURLString:(NSString *)urlString {
+    NSURL *imageURL = [NSURL URLWithString:urlString];
     NSData *imageData = [NSData dataWithContentsOfURL:imageURL];
     UIImage *image = [UIImage imageWithData:imageData];
     return image;

@@ -8,10 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "LunchSingleton.h"
-#import "User.h"
+#import "GetLoginCommand.h"
 #import "Constants.h"
 
-@interface ViewController : UIViewController
+@interface ViewController : UIViewController <GetLoginDelegate>
 
 @property (strong, nonatomic) LunchSingleton *singleton;
 @property (weak, nonatomic) IBOutlet UITextField *emailTextField;

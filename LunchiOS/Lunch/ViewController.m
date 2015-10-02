@@ -32,10 +32,19 @@
     NSString *email = [emailTextField text];
 
     // TODO - query DB to see if email in list of emails from DB
-    User *newUser = [[User alloc] initWithFirst:@"Nathan" andLast:@"Fraenkel" andEmail:@"nathan.fraenkel@newscred.com"];
-    
+    GetLoginCommand *cmd = [[GetLoginCommand alloc] initWithEmail:email];
+    cmd.delegate = self;
+    [cmd login];
+}
+
+-(void)reactToLoginError:(NSError *)error {
+    NSLog(@"ERRROORRRRRRR: %@", error);
+}
+
+-(void)reactToLoginResponse:(User *)newUser {
     self.singleton.user = newUser;
-    
+
     [self performSegueWithIdentifier:@"showMainFeed" sender:self];
 }
+
 @end

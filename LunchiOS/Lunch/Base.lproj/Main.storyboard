@@ -36,7 +36,6 @@
                                         </variation>
                                         <connections>
                                             <action selector="logInButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="XFL-7y-iJ8"/>
-                                            <segue destination="7bU-ie-mAw" kind="showDetail" identifier="showMainFeed" id="RbY-nd-4WE"/>
                                         </connections>
                                     </button>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="password" textAlignment="natural" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="Wd3-ip-lrr">
@@ -99,11 +98,12 @@
                     <connections>
                         <outlet property="emailTextField" destination="iml-Ls-aaY" id="058-JP-D40"/>
                         <outlet property="passwordTextField" destination="Wd3-ip-lrr" id="vXb-ZV-Z36"/>
+                        <segue destination="7bU-ie-mAw" kind="showDetail" identifier="showMainFeed" id="k4Y-o6-wGx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-118.5" y="348"/>
+            <point key="canvasLocation" x="-249" y="366.75"/>
         </scene>
         <!--Feed View Controller-->
         <scene sceneID="kBC-5G-96w">

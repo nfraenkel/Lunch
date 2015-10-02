@@ -7,9 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
+#import "User.h"
+#import "Constants.h"
 
 @protocol GetLoginDelegate <NSObject>
--(void)reactToLoginResponse:(NSArray*)array;
+-(void)reactToLoginResponse:(User*)newUser;
 -(void)reactToLoginError:(NSError*)error;
 @end
 
@@ -18,7 +21,10 @@
     NSMutableData *_data;
 }
 
+@property (nonatomic, strong) NSString *email;
 @property (nonatomic, strong) id<GetLoginDelegate> delegate;
+
+-(id)initWithEmail:(NSString*)newEmail;
 -(void)login;
 
 @end

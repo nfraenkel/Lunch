@@ -56,9 +56,6 @@
     NSLog(@"[GetChoicesCommand] connectiondidfinishloading!");
     [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
     
-    //    NSString *responseString = [[NSString alloc] initWithData:_data encoding:NSUTF8StringEncoding];
-    //    NSLog(@"response data: %@", responseString);
-    
     NSDictionary *dictResponse = [NSJSONSerialization JSONObjectWithData:_data options:0 error:nil];
     
     NSMutableArray *choices = [[NSMutableArray alloc] init];
