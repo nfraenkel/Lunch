@@ -12,7 +12,7 @@
 #import "Constants.h"
 
 @protocol GetChoicesDelegate <NSObject>
--(void)reactToGetChoicesResponse:(NSArray*)array;
+-(void)reactToGetChoicesResponse:(NSMutableArray*)array;
 -(void)reactToGetChoicesError:(NSError*)error;
 @end
 

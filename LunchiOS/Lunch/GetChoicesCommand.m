@@ -69,7 +69,7 @@
         [choices addObject:cc];
     }
     
-    [self.delegate reactToGetChoicesResponse:[NSArray arrayWithArray:choices]];
+    [self.delegate reactToGetChoicesResponse:choices];
     
 }
 

@@ -7,8 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Venue.h"
 
 @interface Choice : NSObject
+
+@property (strong, nonatomic) Venue *venue;
+@property (strong, nonatomic) NSArray *users;
 
 -(id)initWithDictionary:(NSDictionary *)dict;
 

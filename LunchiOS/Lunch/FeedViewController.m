@@ -20,8 +20,6 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    [self fetchChoicesForToday];
-    
     self.singleton = [LunchSingleton sharedDataModel];
     
     // SEGMENTED CONTROL
@@ -30,10 +28,10 @@
                     forControlEvents:UIControlEventValueChanged];
     
     // SCREEN SIZE
-    NSInteger totalSize = 0;
-    CGRect screenRect = [[UIScreen mainScreen] bounds];
-    CGFloat screenWidth = screenRect.size.width;
-    CGFloat screenHeight = screenRect.size.height;
+    totalSize = 0;
+    screenRect = [[UIScreen mainScreen] bounds];
+    screenWidth = screenRect.size.width;
+    screenHeight = screenRect.size.height;
     
     CGRect bigViewFrame = CGRectMake(0, 25 + segmentedControl.frame.size.height, screenWidth, screenHeight - segmentedControl.frame.size.height - 25);
     sv = [[UIScrollView alloc] initWithFrame:bigViewFrame];
@@ -64,64 +62,7 @@
     totalSize = promptLabel.frame.origin.y + promptLabel.frame.size.height + 20;
     sv.contentSize = CGSizeMake(screenWidth, totalSize);
     
-    self.choices = [NSMutableArray arrayWithObjects:@"Dos Toros", @"Spreads", @"Dig Inn", @"SweetGreen", @"Fresh & Co", @"Essen", nil];
-    
-    for (int i = 0; i < [self.choices count]; i++) {
-        NSString *choice = [self.choices objectAtIndex:i];
-        
-        NSInteger rowHeight = 120;
-        CGRect rowViewFrame = CGRectMake(20, totalSize + 20, screenWidth - 40, rowHeight);
-        totalSize += rowHeight;
-        
-        UIView *rowView = [[UIView alloc] initWithFrame:rowViewFrame];
-        rowView.layer.borderColor = [UIColor lightGrayColor].CGColor;
-        rowView.layer.borderWidth = 1.0f;
-        rowView.layer.cornerRadius = 5;
-        rowView.layer.masksToBounds = YES;
-        
-        NSInteger height1 = 10;
-        
-        UIImage *image = [self imageFromURLString:@"http://static1.squarespace.com/static/522a1382e4b0b4c6531b9166/55f3c8abe4b044a1a33db975/55f3c967e4b044a1a33dbabc/1442040168004/U1_logo_DosToros.png"];
-        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(5, height1, 40, 40)];
-        [imageView setImage:image];
-        
-        UILabel *nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(50, height1, screenWidth - 50, 20)];
-        [nameLabel setText:choice];
-        
-        UILabel *subHeaderLabel = [[UILabel alloc] initWithFrame:CGRectMake(50, height1 + 20, screenWidth - 50, 20)];
-        NSString *category = @"Mexican";
-        NSString *distance = @"2.9 miles away";
-        [subHeaderLabel setText:[NSString stringWithFormat:@"%@ -- %@", category, distance]];
-        
-        UIView *seperator = [[UIView alloc] initWithFrame:CGRectMake(5, rowHeight / 2, rowViewFrame.size.width - 10, 1)];
-        [seperator setBackgroundColor:[UIColor lightGrayColor]];
-        
-        CGRect buttonFrame = CGRectMake(rowViewFrame.size.width - 60, 75, 40, 30);
-        JoinButton *joinButton = [[JoinButton alloc] initWithFrame:buttonFrame];
-        joinButton.venue = NULL;
-        joinButton.otherUsers = NULL;
-        [joinButton setTitle:@"Join" forState:UIControlStateNormal];
-        [joinButton setTitleColor:[UIColor orangeColor] forState:UIControlStateNormal];
-        [joinButton.titleLabel setFont:[joinButton.titleLabel.font fontWithSize: 10.0f]];
-        joinButton.layer.borderColor = [UIColor orangeColor].CGColor;
-        joinButton.layer.borderWidth = 1.0f;
-        joinButton.layer.cornerRadius = 5;
-        joinButton.layer.masksToBounds = YES;
-        [joinButton addTarget:self
-                   action:@selector(joinLunch:)
-         forControlEvents:UIControlEventTouchUpInside];
-        
-        [rowView addSubview:imageView];
-        [rowView addSubview:nameLabel];
-        [rowView addSubview:subHeaderLabel];
-        [rowView addSubview:seperator];
-        [rowView addSubview:joinButton];
-        
-        [sv addSubview:rowView];
-        
-        totalSize += 30;
-        sv.contentSize = CGSizeMake(screenWidth, totalSize);
-    }
+//    self.choices = [NSMutableArray arrayWithObjects:@"Dos Toros", @"Spreads", @"Dig Inn", @"SweetGreen", @"Fresh & Co", @"Essen", nil];
     
     
     // TABLE VIEW
@@ -131,8 +72,8 @@
     
     // CONFIRMATION VIEW
     cv = [[UIView alloc] initWithFrame:bigViewFrame];
-    cv.backgroundColor = [UIColor redColor];
-    UIButton *cancelButton = [[UIButton alloc] initWithFrame:CGRectMake(0, screenHeight - 30, screenWidth, 30)];
+    cv.backgroundColor = [UIColor lightGrayColor];
+    UIButton *cancelButton = [[UIButton alloc] initWithFrame:CGRectMake(0, screenHeight - 30 - 80, screenWidth, 40)];
     [cancelButton setTitle:@"go somewhere else?" forState:UIControlStateNormal];
     [cancelButton setBackgroundColor:[UIColor orangeColor]];
     [cancelButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
@@ -145,11 +86,14 @@
     [self.view addSubview:tv];
     [self.view addSubview:cv];
 
+    
+    [self fetchChoicesForToday];
 }
 
 -(void)fetchChoicesForToday {
-        GetChoicesCommand *cmd = [[GetChoicesCommand alloc] init];
-        [cmd fetchChoices];
+    GetChoicesCommand *cmd = [[GetChoicesCommand alloc] init];
+    cmd.delegate = self;
+    [cmd fetchChoices];
 }
 
 
@@ -167,6 +111,67 @@
         [sv setHidden:YES];
         [tv setHidden:NO];
     }
+}
+
+-(void)refreshUI {
+    
+    for (int i = 0; i < [self.choices count]; i++) {
+        Choice *ch = (Choice*)[self.choices objectAtIndex:i];
+        
+        NSInteger rowHeight = 120;
+        CGRect rowViewFrame = CGRectMake(20, totalSize + 20, screenWidth - 40, rowHeight);
+        totalSize += rowHeight;
+        
+        UIView *rowView = [[UIView alloc] initWithFrame:rowViewFrame];
+        rowView.layer.borderColor = [UIColor lightGrayColor].CGColor;
+        rowView.layer.borderWidth = 1.0f;
+        rowView.layer.cornerRadius = 5;
+        rowView.layer.masksToBounds = YES;
+        
+        NSInteger height1 = 10;
+        
+        UIImage *image = [self imageFromURLString:ch.venue.photoUrl];
+        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(5, height1, 40, 40)];
+        [imageView setImage:image];
+        
+        UILabel *nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(50, height1, screenWidth - 50, 20)];
+        [nameLabel setText:ch.venue.name];
+        
+        UILabel *subHeaderLabel = [[UILabel alloc] initWithFrame:CGRectMake(50, height1 + 20, screenWidth - 50, 20)];
+        NSString *category = ch.venue.type;
+        NSString *distance = ch.venue.distance;
+        [subHeaderLabel setText:[NSString stringWithFormat:@"%@ -- %@ miles away", category, distance]];
+        
+        UIView *seperator = [[UIView alloc] initWithFrame:CGRectMake(5, rowHeight / 2, rowViewFrame.size.width - 10, 1)];
+        [seperator setBackgroundColor:[UIColor lightGrayColor]];
+        
+        CGRect buttonFrame = CGRectMake(rowViewFrame.size.width - 60, 75, 40, 30);
+        JoinButton *joinButton = [[JoinButton alloc] initWithFrame:buttonFrame];
+        joinButton.venue = NULL;
+        joinButton.otherUsers = NULL;
+        [joinButton setTitle:@"Join" forState:UIControlStateNormal];
+        [joinButton setTitleColor:[UIColor orangeColor] forState:UIControlStateNormal];
+        [joinButton.titleLabel setFont:[joinButton.titleLabel.font fontWithSize: 10.0f]];
+        joinButton.layer.borderColor = [UIColor orangeColor].CGColor;
+        joinButton.layer.borderWidth = 1.0f;
+        joinButton.layer.cornerRadius = 5;
+        joinButton.layer.masksToBounds = YES;
+        [joinButton addTarget:self
+                       action:@selector(joinLunch:)
+             forControlEvents:UIControlEventTouchUpInside];
+        
+        [rowView addSubview:imageView];
+        [rowView addSubview:nameLabel];
+        [rowView addSubview:subHeaderLabel];
+        [rowView addSubview:seperator];
+        [rowView addSubview:joinButton];
+        
+        [sv addSubview:rowView];
+        
+        totalSize += 30;
+        sv.contentSize = CGSizeMake(screenWidth, totalSize);
+    }
+
 }
 
 
@@ -203,9 +208,10 @@
     NSLog(@"ERRORRRRRRR: %@", error);
 }
 
--(void)reactToGetChoicesResponse:(NSArray *)array {
+-(void)reactToGetChoicesResponse:(NSMutableArray *)array {
     NSLog(@"IN HERE!!!!! %@", array);
-    self.choices = [NSMutableArray arrayWithArray:array];
+    self.choices = array;
+    [self refreshUI];
 }
 
 - (UIImage *)imageFromURLString:(NSString *)urlString

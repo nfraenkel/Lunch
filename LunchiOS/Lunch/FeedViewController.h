@@ -10,12 +10,17 @@
 #import "LunchSingleton.h"
 #import "GetChoicesCommand.h"
 #import "JoinButton.h"
+#import "Choice.h"
 #import "Constants.h"
 
 @interface FeedViewController : UIViewController <UIScrollViewDelegate, GetChoicesDelegate> {
     UIScrollView *sv;
     UITableView *tv;
     UIView *cv;
+    
+    NSInteger totalSize;
+    CGRect screenRect;
+    CGFloat screenWidth, screenHeight;
 }
 
 @property (strong, nonatomic) LunchSingleton *singleton;

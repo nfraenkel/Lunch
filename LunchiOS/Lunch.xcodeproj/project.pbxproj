@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		649AB6331BBE0E70001F7014 /* cD1mMjhjMTAyOTBjYjRlYWRlZGE4ZjJlMDg0OWI5NjZlMiZnPWY2ZDljYTlkZjcyMjkxNTIwNDAxM2U5Yjk5YTc1MDg1.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 649AB6321BBE0E70001F7014 /* cD1mMjhjMTAyOTBjYjRlYWRlZGE4ZjJlMDg0OWI5NjZlMiZnPWY2ZDljYTlkZjcyMjkxNTIwNDAxM2U5Yjk5YTc1MDg1.jpeg */; };
-		649AB6371BBE109F001F7014 /* lunch-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 649AB6361BBE109F001F7014 /* lunch-logo.png */; };
+		F68F44861BBE15D900708F2E /* cD1mMjhjMTAyOTBjYjRlYWRlZGE4ZjJlMDg0OWI5NjZlMiZnPWY2ZDljYTlkZjcyMjkxNTIwNDAxM2U5Yjk5YTc1MDg1.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = F68F44851BBE15D900708F2E /* cD1mMjhjMTAyOTBjYjRlYWRlZGE4ZjJlMDg0OWI5NjZlMiZnPWY2ZDljYTlkZjcyMjkxNTIwNDAxM2U5Yjk5YTc1MDg1.jpeg */; settings = {ASSET_TAGS = (); }; };
+		F68F44881BBE15EB00708F2E /* lunch-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = F68F44871BBE15EB00708F2E /* lunch-logo.png */; settings = {ASSET_TAGS = (); }; };
 		F6DEE86C1BBDBA1B00060640 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F6DEE86B1BBDBA1B00060640 /* main.m */; };
 		F6DEE86F1BBDBA1B00060640 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F6DEE86E1BBDBA1B00060640 /* AppDelegate.m */; };
 		F6DEE8721BBDBA1B00060640 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F6DEE8711BBDBA1B00060640 /* ViewController.m */; };
@@ -46,8 +46,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		649AB6321BBE0E70001F7014 /* cD1mMjhjMTAyOTBjYjRlYWRlZGE4ZjJlMDg0OWI5NjZlMiZnPWY2ZDljYTlkZjcyMjkxNTIwNDAxM2U5Yjk5YTc1MDg1.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = cD1mMjhjMTAyOTBjYjRlYWRlZGE4ZjJlMDg0OWI5NjZlMiZnPWY2ZDljYTlkZjcyMjkxNTIwNDAxM2U5Yjk5YTc1MDg1.jpeg; path = ../../../Desktop/Lunch/_Assets/Illustrations/cD1mMjhjMTAyOTBjYjRlYWRlZGE4ZjJlMDg0OWI5NjZlMiZnPWY2ZDljYTlkZjcyMjkxNTIwNDAxM2U5Yjk5YTc1MDg1.jpeg; sourceTree = "<group>"; };
-		649AB6361BBE109F001F7014 /* lunch-logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "lunch-logo.png"; path = "../../../Desktop/Lunch/_Assets/lunch-logo.png"; sourceTree = "<group>"; };
+		F68F44851BBE15D900708F2E /* cD1mMjhjMTAyOTBjYjRlYWRlZGE4ZjJlMDg0OWI5NjZlMiZnPWY2ZDljYTlkZjcyMjkxNTIwNDAxM2U5Yjk5YTc1MDg1.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = cD1mMjhjMTAyOTBjYjRlYWRlZGE4ZjJlMDg0OWI5NjZlMiZnPWY2ZDljYTlkZjcyMjkxNTIwNDAxM2U5Yjk5YTc1MDg1.jpeg; sourceTree = "<group>"; };
+		F68F44871BBE15EB00708F2E /* lunch-logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "lunch-logo.png"; sourceTree = "<group>"; };
 		F6DEE8671BBDBA1B00060640 /* Lunch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lunch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F6DEE86B1BBDBA1B00060640 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		F6DEE86D1BBDBA1B00060640 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -113,8 +113,8 @@
 		649AB6311BBE0DA4001F7014 /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				649AB6361BBE109F001F7014 /* lunch-logo.png */,
-				649AB6321BBE0E70001F7014 /* cD1mMjhjMTAyOTBjYjRlYWRlZGE4ZjJlMDg0OWI5NjZlMiZnPWY2ZDljYTlkZjcyMjkxNTIwNDAxM2U5Yjk5YTc1MDg1.jpeg */,
+				F68F44871BBE15EB00708F2E /* lunch-logo.png */,
+				F68F44851BBE15D900708F2E /* cD1mMjhjMTAyOTBjYjRlYWRlZGE4ZjJlMDg0OWI5NjZlMiZnPWY2ZDljYTlkZjcyMjkxNTIwNDAxM2U5Yjk5YTc1MDg1.jpeg */,
 			);
 			name = Images;
 			sourceTree = "<group>";
@@ -323,8 +323,8 @@
 			files = (
 				F6DEE87A1BBDBA1B00060640 /* LaunchScreen.storyboard in Resources */,
 				F6DEE8771BBDBA1B00060640 /* Assets.xcassets in Resources */,
-				649AB6371BBE109F001F7014 /* lunch-logo.png in Resources */,
-				649AB6331BBE0E70001F7014 /* cD1mMjhjMTAyOTBjYjRlYWRlZGE4ZjJlMDg0OWI5NjZlMiZnPWY2ZDljYTlkZjcyMjkxNTIwNDAxM2U5Yjk5YTc1MDg1.jpeg in Resources */,
+				F68F44881BBE15EB00708F2E /* lunch-logo.png in Resources */,
+				F68F44861BBE15D900708F2E /* cD1mMjhjMTAyOTBjYjRlYWRlZGE4ZjJlMDg0OWI5NjZlMiZnPWY2ZDljYTlkZjcyMjkxNTIwNDAxM2U5Yjk5YTc1MDg1.jpeg in Resources */,
 				F6DEE8751BBDBA1B00060640 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
