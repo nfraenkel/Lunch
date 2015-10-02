@@ -425,7 +425,8 @@ func GetChoiceHistory(c web.C, w http.ResponseWriter, r *http.Request) (int, err
 					'name', v.venue_name,
 					'photo', v.venue_photo
 					) from venues v WHERE v.venue_id = h.venue_id
-				) AS venue
+				) AS venue,
+				h.history_created as created
 			FROM history h
 		) x;
 	`
