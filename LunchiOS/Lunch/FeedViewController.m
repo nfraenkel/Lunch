@@ -14,7 +14,7 @@
 
 @implementation FeedViewController
 
-@synthesize singleton, segmentedControl, choices;
+@synthesize singleton, segmentedControl, choices, HUD;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -140,6 +140,10 @@
 }
 
 -(void)fetchChoicesForToday {
+    HUD = [MBProgressHUD showHUDAddedTo:sv animated:YES];
+    HUD.delegate = self;
+    HUD.labelText = @"Loading...";
+    
     GetChoicesCommand *cmd = [[GetChoicesCommand alloc] init];
     cmd.delegate = self;
     [cmd fetchChoices];
@@ -438,11 +442,13 @@
 }
 
 -(void)reactToGetChoicesError:(NSError *)error {
+    [HUD hide:YES];
     NSLog(@"ERRORRRRRRR: %@", error);
 }
 
 -(void)reactToGetChoicesResponse:(NSMutableArray *)array {
     self.choices = array;
+    [HUD hide:YES];
     [self refreshUI];
 }
 

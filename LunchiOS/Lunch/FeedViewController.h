@@ -16,8 +16,9 @@
 #import "Choice.h"
 #import "User.h"
 #import "Constants.h"
+#import "MBProgressHUD.h"
 
-@interface FeedViewController : UIViewController <UIScrollViewDelegate, GetChoicesDelegate, GetHistoryDelegate, JoinChoiceDelegate, DeleteJoinDelegate, UITableViewDataSource, UITableViewDelegate> {
+@interface FeedViewController : UIViewController <UIScrollViewDelegate, GetChoicesDelegate, GetHistoryDelegate, JoinChoiceDelegate, DeleteJoinDelegate, UITableViewDataSource, UITableViewDelegate, MBProgressHUDDelegate> {
     UIScrollView *sv;
     UITableView *tv;
     UIView *cv;
@@ -31,6 +32,8 @@
 
 @property (strong, nonatomic) LunchSingleton *singleton;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segmentedControl;
+
+@property (strong, nonatomic) MBProgressHUD *HUD;
 
 @property (strong, nonatomic) NSMutableArray *choices, *history;
 

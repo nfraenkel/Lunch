@@ -43,6 +43,7 @@
 		F6DEE8BE1BBDCFE400060640 /* FeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F6DEE8BD1BBDCFE400060640 /* FeedViewController.m */; };
 		F6DEE8C11BBDEB7E00060640 /* JoinButton.m in Sources */ = {isa = PBXBuildFile; fileRef = F6DEE8C01BBDEB7E00060640 /* JoinButton.m */; };
 		F6DEE8C51BBDF65900060640 /* GetLoginCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F6DEE8C41BBDF65900060640 /* GetLoginCommand.m */; };
+		F6F008F51BBEE9AD00185DBB /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = F6F008F41BBEE9AD00185DBB /* MBProgressHUD.m */; settings = {ASSET_TAGS = (); }; };
 		F6F580A91BBE757B00DDC328 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = F6F580A81BBE757B00DDC328 /* background.png */; settings = {ASSET_TAGS = (); }; };
 		F6F580AC1BBE90B900DDC328 /* TutorialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F6F580AB1BBE90B800DDC328 /* TutorialViewController.m */; settings = {ASSET_TAGS = (); }; };
 		F6F580B71BBEB4DD00DDC328 /* TutorialCardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F6F580B51BBEB4DD00DDC328 /* TutorialCardViewController.m */; settings = {ASSET_TAGS = (); }; };
@@ -124,6 +125,8 @@
 		F6DEE8C21BBDF5CC00060640 /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		F6DEE8C31BBDF65900060640 /* GetLoginCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetLoginCommand.h; sourceTree = "<group>"; };
 		F6DEE8C41BBDF65900060640 /* GetLoginCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetLoginCommand.m; sourceTree = "<group>"; };
+		F6F008F31BBEE9AD00185DBB /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		F6F008F41BBEE9AD00185DBB /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		F6F580A81BBE757B00DDC328 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
 		F6F580AA1BBE90B800DDC328 /* TutorialViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TutorialViewController.h; sourceTree = "<group>"; };
 		F6F580AB1BBE90B800DDC328 /* TutorialViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TutorialViewController.m; sourceTree = "<group>"; };
@@ -203,6 +206,8 @@
 		F6DEE8691BBDBA1B00060640 /* Lunch */ = {
 			isa = PBXGroup;
 			children = (
+				F6F008F31BBEE9AD00185DBB /* MBProgressHUD.h */,
+				F6F008F41BBEE9AD00185DBB /* MBProgressHUD.m */,
 				649AB6311BBE0DA4001F7014 /* Images */,
 				F6DEE8B51BBDC99500060640 /* DataAccess */,
 				F6DEE89E1BBDBF6C00060640 /* Models */,
@@ -452,6 +457,7 @@
 				F6F580B71BBEB4DD00DDC328 /* TutorialCardViewController.m in Sources */,
 				F6DEE8AF1BBDC35E00060640 /* Venue.m in Sources */,
 				F6DEE8BE1BBDCFE400060640 /* FeedViewController.m in Sources */,
+				F6F008F51BBEE9AD00185DBB /* MBProgressHUD.m in Sources */,
 				F6DEE86F1BBDBA1B00060640 /* AppDelegate.m in Sources */,
 				F6DEE8B21BBDC37300060640 /* LunchSingleton.m in Sources */,
 				F6DEE8C51BBDF65900060640 /* GetLoginCommand.m in Sources */,
