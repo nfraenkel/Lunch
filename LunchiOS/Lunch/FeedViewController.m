@@ -23,6 +23,7 @@
     self.singleton = [LunchSingleton sharedDataModel];
     
     UIColor *brandOrange = [UIColor colorWithRed:241.0f/255.0f green:92.0f/255.0f blue:37.0f/255.0f alpha:1.0f];
+    UIColor *darkOrange = [UIColor colorWithRed:215.0f/255.0f green:80.0f/255.0f blue:30.0f/255.0f alpha:1.0f];
     
     // SEGMENTED CONTROL
     [self.segmentedControl addTarget:self
@@ -49,6 +50,7 @@
     CGRect bigViewFrame = CGRectMake(0, offset + segmentedControl.frame.size.height, screenWidth, screenHeight - segmentedControl.frame.size.height - offset);
     sv = [[UIScrollView alloc] initWithFrame:bigViewFrame];
     sv.delegate = self;
+    [sv setBackgroundColor:darkOrange];
     [self.view addSubview:sv];
     
     // seperator
@@ -57,17 +59,17 @@
     [self.view addSubview:seperatorTop];
     
     // orange top background
-    CGRect orangeBGTopFrame = CGRectMake(0, 0, screenWidth, 300);
+    CGRect orangeBGTopFrame = CGRectMake(0, 0, screenWidth, 280);
     UIView *orangeBGTop = [[UIView alloc] initWithFrame:orangeBGTopFrame];
     [orangeBGTop setBackgroundColor:brandOrange];
     [sv addSubview:orangeBGTop];
     
     // greeting label
-    CGRect greetingLabelFrame = CGRectMake(0, 140, screenWidth, 40);
+    CGRect greetingLabelFrame = CGRectMake(0, 150, screenWidth, 40);
     UILabel *greetingLabel = [[UILabel alloc] initWithFrame:greetingLabelFrame];
     [greetingLabel setText:[NSString stringWithFormat:@"Hungry %@?", self.singleton.user.first]];
     greetingLabel.textAlignment = NSTextAlignmentCenter;
-    [greetingLabel setFont:[UIFont fontWithName:@"HelveticaNeue" size:28.0f]];
+    [greetingLabel setFont:[UIFont fontWithName:@"HelveticaNeue" size:32.0f]];
     [greetingLabel setTextColor:[UIColor whiteColor]];
 
     // date
@@ -76,16 +78,16 @@
     [lunchFor setText:[NSString stringWithFormat:@"Lunch for"]];
     lunchFor.textAlignment = NSTextAlignmentCenter;
     [lunchFor setTextColor:[UIColor whiteColor]];
-    [lunchFor setFont:[UIFont fontWithName:@"HelveticaNeue" size:16.0f]];
+    [lunchFor setFont:[UIFont fontWithName:@"HelveticaNeue" size:14.0f]];
 
     CGRect dateLabelFrame = CGRectMake(0, 32, screenWidth, 20);
     UILabel *dateLabel = [[UILabel alloc] initWithFrame:dateLabelFrame];
     [dateLabel setText:[NSString stringWithFormat:@"Thursday, October 1"]];
     dateLabel.textAlignment = NSTextAlignmentCenter;
     [dateLabel setTextColor:[UIColor whiteColor]];
-    [dateLabel setFont:[UIFont fontWithName:@"HelveticaNeue" size:16.0f]];
+    [dateLabel setFont:[UIFont fontWithName:@"HelveticaNeue" size:14.0f]];
     
-    CGRect promptLabelFrame = CGRectMake(80, 220, screenWidth - 160, 50);
+    CGRect promptLabelFrame = CGRectMake(80, 190, screenWidth - 160, 50);
     UILabel *promptLabel = [[UILabel alloc] initWithFrame:promptLabelFrame];
     promptLabel.textAlignment = NSTextAlignmentCenter;
     promptLabel.numberOfLines = 2;
@@ -115,7 +117,7 @@
     [orangeBGTop addSubview:food4];
     [orangeBGTop addSubview:food5];
     
-    totalSize = orangeBGTopFrame.origin.y + orangeBGTopFrame.size.height + 10;
+    totalSize = orangeBGTopFrame.origin.y + orangeBGTopFrame.size.height;
     sv.contentSize = CGSizeMake(screenWidth, totalSize);
     
     // TABLE VIEW
@@ -180,86 +182,61 @@
     for (int i = 0; i < [self.choices count]; i++) {
         Choice *ch = (Choice*)[self.choices objectAtIndex:i];
         
-        NSInteger rowHeight = 120;
+        NSInteger rowHeight = 135;
         CGRect rowViewFrame = CGRectMake(20, totalSize + 20, screenWidth - 40, rowHeight);
         totalSize += rowHeight;
         
         UIView *rowView = [[UIView alloc] initWithFrame:rowViewFrame];
-        rowView.layer.borderColor = [UIColor lightGrayColor].CGColor;
-        rowView.layer.borderWidth = 1.0f;
         rowView.layer.cornerRadius = 5;
         rowView.layer.masksToBounds = YES;
+        [rowView setBackgroundColor:[UIColor whiteColor]];
         
-        NSInteger height1 = 10;
+        NSInteger height1 = 15;
         
         UIImage *image = [self imageFromURLString:ch.venue.photoUrl];
-        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(5, height1, 40, 40)];
+        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(20, height1, 40, 40)];
         [imageView setImage:image];
         imageView.layer.cornerRadius = imageView.frame.size.height/2;
         imageView.layer.masksToBounds = YES;
         
-        UILabel *nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(50, height1, screenWidth - 50, 20)];
+        UILabel *nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(80, height1, screenWidth - 50, 20)];
         [nameLabel setText:ch.venue.name];
+        [nameLabel setFont:[UIFont fontWithName:@"HelveticaNeue" size:16.0f]];
         
-        UILabel *subHeaderLabel = [[UILabel alloc] initWithFrame:CGRectMake(50, height1 + 20, screenWidth - 50, 20)];
+        UILabel *subHeaderLabel = [[UILabel alloc] initWithFrame:CGRectMake(80, height1 + 20, screenWidth - 50, 20)];
         NSString *category = ch.venue.type;
         NSString *distance = ch.venue.distance;
         [subHeaderLabel setText:[NSString stringWithFormat:@"%@ - %@ miles away", category, distance]];
+        [subHeaderLabel setFont:[UIFont fontWithName:@"HelveticaNeue" size:14.0f]];
+        [subHeaderLabel setTextColor:[UIColor lightGrayColor]];
         
-        UIView *seperator = [[UIView alloc] initWithFrame:CGRectMake(5, rowHeight / 2, rowViewFrame.size.width - 10, 1)];
-        [seperator setBackgroundColor:[UIColor lightGrayColor]];
+        UIView *seperator = [[UIView alloc] initWithFrame:CGRectMake(10, rowHeight / 2, rowViewFrame.size.width - 20, 1)];
+        [seperator setBackgroundColor:[UIColor colorWithWhite:0.8f alpha:1.0f]];
         
         // users
-        NSInteger runningX = 5;
         NSArray *users = ch.users;
-        for (int i = 0; i < [users count]; i++) {
-            if (i == 3) {
-                UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(runningX, 60, 20, 20)];
-                [imageView setTag:i];
-                [imageView setImage:[UIImage imageNamed:@"default-user.png"]];
-                imageView.layer.cornerRadius = imageView.frame.size.height/2;
-                imageView.layer.masksToBounds = YES;
-                [rowView addSubview:imageView];
-
-                runningX += 20 + 5;
-                break;
-            }
-            User *u = (User*)[users objectAtIndex:i];
-            UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(runningX, 80, 20, 20)];
-            [imageView setTag:i];
-            [imageView setImage:[self imageFromURLString:u.photoUrl]];
-            imageView.layer.cornerRadius = imageView.frame.size.height/2;
-            imageView.layer.masksToBounds = YES;
-            [rowView addSubview:imageView];
-            
-            runningX += 20 + 5;
-        }
-        UILabel *usersGoingLabel = [[UILabel alloc] initWithFrame:CGRectMake(runningX, 80, screenWidth - runningX, 20)];
+        UILabel *usersGoingLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 90, screenWidth - 20, 20)];
         NSString *usersText = NULL;
-        switch ([users count]) {
-            case 0:
-                usersText = [NSString stringWithFormat:@"No users are going to %@", ch.venue.name];
-                break;
-            case 1:
-                usersText = @" is going";
-                break;
-            default:
-                usersText = @" are going";
-                break;
+        if ([users count] == 0) {
+            usersText = @"No one is going yet. Lead the way!";
+        }
+        else {
+            usersText = [NSString stringWithFormat:@"%lu of your coworkers are going", [users count]];
         }
         [usersGoingLabel setText:usersText];
         [usersGoingLabel setTextColor:[UIColor lightGrayColor]];
-        [usersGoingLabel setFont:[UIFont systemFontOfSize:10.0f]];
+        [usersGoingLabel setFont:[UIFont fontWithName:@"HelveticaNeue" size:16.0f]];
         [rowView addSubview:usersGoingLabel];
         
-        CGRect buttonFrame = CGRectMake(rowViewFrame.size.width - 60, 75, 40, 30);
+        UIColor *darkOrange = [UIColor colorWithRed:215.0f/255.0f green:80.0f/255.0f blue:30.0f/255.0f alpha:1.0f];
+        CGRect buttonFrame = CGRectMake(rowViewFrame.size.width - 60, 87.5, 40, 30);
         JoinButton *joinButton = [[JoinButton alloc] initWithFrame:buttonFrame];
         joinButton.venue = NULL;
         joinButton.otherUsers = NULL;
         [joinButton setTitle:@"Join" forState:UIControlStateNormal];
-        [joinButton setTitleColor:[UIColor orangeColor] forState:UIControlStateNormal];
-        [joinButton.titleLabel setFont:[joinButton.titleLabel.font fontWithSize: 10.0f]];
-        joinButton.layer.borderColor = [UIColor orangeColor].CGColor;
+        [joinButton setTitleColor:darkOrange forState:UIControlStateNormal];
+        [joinButton.titleLabel setFont:[UIFont fontWithName:@"HelveticaNeue" size:12.0f]];
+        joinButton.layer.borderColor = darkOrange.CGColor;
         joinButton.layer.borderWidth = 1.0f;
         joinButton.layer.cornerRadius = 5;
         joinButton.layer.masksToBounds = YES;
@@ -275,9 +252,10 @@
         
         [sv addSubview:rowView];
         
-        totalSize += 30;
+        totalSize += 20;
         sv.contentSize = CGSizeMake(screenWidth, totalSize);
     }
+    totalSize += 20;
 
 }
 
