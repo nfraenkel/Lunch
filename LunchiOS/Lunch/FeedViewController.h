@@ -11,12 +11,13 @@
 #import "GetChoicesCommand.h"
 #import "GetHistoryCommand.h"
 #import "JoinChoiceCommand.h"
+#import "DeleteJoinCommand.h"
 #import "JoinButton.h"
 #import "Choice.h"
 #import "User.h"
 #import "Constants.h"
 
-@interface FeedViewController : UIViewController <UIScrollViewDelegate, GetChoicesDelegate, GetHistoryDelegate, JoinChoiceDelegate, UITableViewDataSource, UITableViewDelegate> {
+@interface FeedViewController : UIViewController <UIScrollViewDelegate, GetChoicesDelegate, GetHistoryDelegate, JoinChoiceDelegate, DeleteJoinDelegate, UITableViewDataSource, UITableViewDelegate> {
     UIScrollView *sv;
     UITableView *tv;
     UIView *cv;

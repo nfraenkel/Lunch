@@ -414,6 +414,17 @@
 
 -(void)cancelLunch:(UIButton *)sender {
     NSLog(@"CANCELLING");
+    
+    DeleteJoinCommand *cmd = [[DeleteJoinCommand alloc] initWithUser:self.singleton.user];
+    cmd.delegate = self;
+    [cmd deleteJoin];
+}
+
+-(void)reactToDeleteJoinError:(NSError *)error {
+    NSLog(@"DELETE JOINE RRRROORORRR :( : %@", error);
+}
+
+-(void)reactToDeleteJoinResponse {
     [sv setHidden:NO];
     [cv setHidden:YES];
     confirmationScreen = NO;
