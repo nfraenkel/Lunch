@@ -265,6 +265,7 @@ func GetVenuesWithChoices(c web.C, w http.ResponseWriter, r *http.Request) (int,
 				v.venue_id as id,
 				v.venue_name as name,
 				v.venue_location as location,
+				v.venue_distance as distance,
 				v.venue_type as type,
 				v.venue_photo as photo,
 				(SELECT coalesce(
