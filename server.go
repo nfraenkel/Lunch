@@ -2,8 +2,8 @@ package main
 
 import (
 	_ "database/sql"
-	"encoding/json"
 	"encoding/csv"
+	"encoding/json"
 	"flag"
 	"fmt"
 	"github.com/nfraenkel/lunch/Godeps/_workspace/src/github.com/jmoiron/sqlx"
@@ -240,6 +240,7 @@ func GetUsers(c web.C, w http.ResponseWriter, r *http.Request) (int, error) {
 			SELECT
 				u.user_id as id,
 				u.user_first_name as first_name,
+				u.user_email as email,
 				u.user_last_name as last_name,
 				u.user_photo as photo
 			FROM users u
@@ -370,22 +371,22 @@ func Log(message string) {
 func populateDb() {
 	csvfile, err := os.Open("venues.csv")
 	if err != nil {
-			fmt.Println(err)
-			return
+		fmt.Println(err)
+		return
 	}
 	defer csvfile.Close()
 	reader := csv.NewReader(csvfile)
 	reader.FieldsPerRecord = -1 // see the Reader struct information below
 	rawCSVdata, err := reader.ReadAll()
 	if err != nil {
-			fmt.Println(err)
-			return
+		fmt.Println(err)
+		return
 	}
 	for _, each := range rawCSVdata {
 		v := &Venue{
-			Name: each[1],
-			Photo: each[5],
-			Type: each[2],
+			Name:     each[1],
+			Photo:    each[5],
+			Type:     each[2],
 			Distance: each[3],
 			Location: "New York, NY",
 		}
@@ -401,21 +402,21 @@ func populateDb() {
 func populateDbWithUsers() {
 	csvfile, err := os.Open("users.csv")
 	if err != nil {
-			fmt.Println(err)
-			return
+		fmt.Println(err)
+		return
 	}
 	defer csvfile.Close()
 	reader := csv.NewReader(csvfile)
 	reader.FieldsPerRecord = -1 // see the Reader struct information below
 	rawCSVdata, err := reader.ReadAll()
 	if err != nil {
-			fmt.Println(err)
-			return
+		fmt.Println(err)
+		return
 	}
 	for _, each := range rawCSVdata {
 		u := &User{
 			First: each[1],
-			Last: each[2],
+			Last:  each[2],
 			Email: each[3],
 			Photo: each[4],
 		}
