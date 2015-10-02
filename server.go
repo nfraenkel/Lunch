@@ -302,8 +302,9 @@ func GetVenuesWithChoices(c web.C, w http.ResponseWriter, r *http.Request) (int,
 					FROM users u
 					JOIN choices c USING (user_id)
 					WHERE c.venue_id = v.venue_id
-				) users
-			FROM venues v
+				) users,
+				(SELECT count(*) FROM users u JOIN choices c USING (user_id) WHERE c.venue_id = v.venue_id) AS count_num
+			FROM venues v ORDER BY count_num DESC
 		) x;
 	`
 	rows, err := server.db.Query(getVenuesSql)
