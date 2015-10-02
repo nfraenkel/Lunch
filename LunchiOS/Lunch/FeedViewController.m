@@ -122,8 +122,9 @@
     
     // TABLE VIEW
     tv = [[UITableView alloc] initWithFrame:bigViewFrame];
-    [tv setBackgroundColor:[UIColor blueColor]];
     tv.hidden = YES;
+    tv.delegate = self;
+    tv.dataSource = self;
     
     // CONFIRMATION VIEW
     cv = [[UIView alloc] initWithFrame:bigViewFrame];
@@ -135,12 +136,19 @@
     [self.view addSubview:cv];
 
     [self fetchChoicesForToday];
+    [self fetchChoicesForYesterday];
 }
 
 -(void)fetchChoicesForToday {
     GetChoicesCommand *cmd = [[GetChoicesCommand alloc] init];
     cmd.delegate = self;
     [cmd fetchChoices];
+}
+
+-(void)fetchChoicesForYesterday {
+    GetHistoryCommand *cmd = [[GetHistoryCommand alloc] init];
+    cmd.delegate = self;
+    [cmd fetchHistory];
 }
 
 
@@ -284,11 +292,10 @@
     self.singleton.currentVenue = jb.venue;
     self.singleton.otherUsers = jb.otherUsers;
     
-    [self makeConfirmationView];
-    
-    [sv setHidden:YES];
-    [cv setHidden:NO];
-    confirmationScreen = YES;
+    // join choice
+    JoinChoiceCommand *cmd = [[JoinChoiceCommand alloc] initWithUser:self.singleton.user andVenue:jb.venue];
+    cmd.delegate = self;
+    [cmd joinChoice];
 }
 
 -(void)makeConfirmationView {
@@ -421,11 +428,75 @@
     [self refreshUI];
 }
 
+-(void)reactToGetHistoryError:(NSError *)error {
+    NSLog(@"OH NO ERROR :(: %@", error);
+}
+
+-(void)reactToGetHistoryResponse:(NSMutableArray *)array {
+    self.history = array;
+    [tv reloadData];
+}
+
+-(void)reactToJoinChoiceError:(NSError *)error {
+    NSLog(@"jOIN CHOICE ERRORORORRRRR");
+}
+
+-(void)reactToJoinChoiceResponse {
+    [self makeConfirmationView];
+    
+    [sv setHidden:YES];
+    [cv setHidden:NO];
+    confirmationScreen = YES;
+}
+
 - (UIImage *)imageFromURLString:(NSString *)urlString {
     NSURL *imageURL = [NSURL URLWithString:urlString];
     NSData *imageData = [NSData dataWithContentsOfURL:imageURL];
     UIImage *image = [UIImage imageWithData:imageData];
     return image;
+}
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return [self.history count];
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 70;
+}
+
+-(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    Choice *ch = [self.history objectAtIndex:indexPath.row];
+    
+    static NSString *CellIdentifier = @"historyCell";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        
+        UIImageView *venueImageView = [[UIImageView alloc] initWithFrame:CGRectMake(10, 10, 40, 40)];
+        [venueImageView setImage:[self imageFromURLString:ch.venue.photoUrl]];
+        venueImageView.layer.cornerRadius = venueImageView.frame.size.height/2;
+        venueImageView.layer.masksToBounds = YES;
+        [cell addSubview:venueImageView];
+        
+        NSString *text = @"";
+        for (int i = 0; i < [ch.users count]; i++) {
+            User *u = [ch.users objectAtIndex:i];
+            if (i == [ch.users count] - 1) {
+                text = [text stringByAppendingString:[NSString stringWithFormat:@"and %@", u.first]];
+            }
+            else {
+                text = [text stringByAppendingString:[NSString stringWithFormat:@"%@, ", u.first]];
+            }
+        }
+        text = [text stringByAppendingString:[NSString stringWithFormat:@" had lunch at %@", ch.venue.name]];
+        UILabel *tLabel = [[UILabel alloc] initWithFrame:CGRectMake(60, 10, screenWidth - 60, 30)];
+        [tLabel setText:text];
+        [cell addSubview:tLabel];
+    }
+    
+    return cell;
 }
 
 

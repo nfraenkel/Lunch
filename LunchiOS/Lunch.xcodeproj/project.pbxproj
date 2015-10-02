@@ -18,6 +18,11 @@
 		F68ECF7F1BBE59E500092AB4 /* icon-food-5.png in Resources */ = {isa = PBXBuildFile; fileRef = F68ECF7A1BBE59E500092AB4 /* icon-food-5.png */; settings = {ASSET_TAGS = (); }; };
 		F68F44861BBE15D900708F2E /* cD1mMjhjMTAyOTBjYjRlYWRlZGE4ZjJlMDg0OWI5NjZlMiZnPWY2ZDljYTlkZjcyMjkxNTIwNDAxM2U5Yjk5YTc1MDg1.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = F68F44851BBE15D900708F2E /* cD1mMjhjMTAyOTBjYjRlYWRlZGE4ZjJlMDg0OWI5NjZlMiZnPWY2ZDljYTlkZjcyMjkxNTIwNDAxM2U5Yjk5YTc1MDg1.jpeg */; settings = {ASSET_TAGS = (); }; };
 		F68F44881BBE15EB00708F2E /* lunch-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = F68F44871BBE15EB00708F2E /* lunch-logo.png */; settings = {ASSET_TAGS = (); }; };
+		F6A98FE41BBECD0A00ECA7D6 /* JoinChoiceCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F6A98FE31BBECD0A00ECA7D6 /* JoinChoiceCommand.m */; settings = {ASSET_TAGS = (); }; };
+		F6A98FE61BBECD6500ECA7D6 /* Lunch--App-Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = F6A98FE51BBECD6500ECA7D6 /* Lunch--App-Icon.png */; settings = {ASSET_TAGS = (); }; };
+		F6AABD951BBEBD6600B4A3D4 /* GetHistoryCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F6AABD941BBEBD6600B4A3D4 /* GetHistoryCommand.m */; settings = {ASSET_TAGS = (); }; };
+		F6AABD991BBEC19C00B4A3D4 /* HistoryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F6AABD971BBEC19C00B4A3D4 /* HistoryTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
+		F6AABD9A1BBEC19C00B4A3D4 /* HistoryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F6AABD981BBEC19C00B4A3D4 /* HistoryTableViewCell.xib */; settings = {ASSET_TAGS = (); }; };
 		F6DEE86C1BBDBA1B00060640 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F6DEE86B1BBDBA1B00060640 /* main.m */; };
 		F6DEE86F1BBDBA1B00060640 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F6DEE86E1BBDBA1B00060640 /* AppDelegate.m */; };
 		F6DEE8721BBDBA1B00060640 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F6DEE8711BBDBA1B00060640 /* ViewController.m */; };
@@ -69,6 +74,14 @@
 		F68ECF7A1BBE59E500092AB4 /* icon-food-5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-food-5.png"; sourceTree = "<group>"; };
 		F68F44851BBE15D900708F2E /* cD1mMjhjMTAyOTBjYjRlYWRlZGE4ZjJlMDg0OWI5NjZlMiZnPWY2ZDljYTlkZjcyMjkxNTIwNDAxM2U5Yjk5YTc1MDg1.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = cD1mMjhjMTAyOTBjYjRlYWRlZGE4ZjJlMDg0OWI5NjZlMiZnPWY2ZDljYTlkZjcyMjkxNTIwNDAxM2U5Yjk5YTc1MDg1.jpeg; sourceTree = "<group>"; };
 		F68F44871BBE15EB00708F2E /* lunch-logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "lunch-logo.png"; sourceTree = "<group>"; };
+		F6A98FE21BBECD0A00ECA7D6 /* JoinChoiceCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JoinChoiceCommand.h; sourceTree = "<group>"; };
+		F6A98FE31BBECD0A00ECA7D6 /* JoinChoiceCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JoinChoiceCommand.m; sourceTree = "<group>"; };
+		F6A98FE51BBECD6500ECA7D6 /* Lunch--App-Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Lunch--App-Icon.png"; sourceTree = "<group>"; };
+		F6AABD931BBEBD6600B4A3D4 /* GetHistoryCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetHistoryCommand.h; sourceTree = "<group>"; };
+		F6AABD941BBEBD6600B4A3D4 /* GetHistoryCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetHistoryCommand.m; sourceTree = "<group>"; };
+		F6AABD961BBEC19C00B4A3D4 /* HistoryTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryTableViewCell.h; sourceTree = "<group>"; };
+		F6AABD971BBEC19C00B4A3D4 /* HistoryTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryTableViewCell.m; sourceTree = "<group>"; };
+		F6AABD981BBEC19C00B4A3D4 /* HistoryTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HistoryTableViewCell.xib; sourceTree = "<group>"; };
 		F6DEE8671BBDBA1B00060640 /* Lunch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lunch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F6DEE86B1BBDBA1B00060640 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		F6DEE86D1BBDBA1B00060640 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -138,6 +151,7 @@
 		649AB6311BBE0DA4001F7014 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				F6A98FE51BBECD6500ECA7D6 /* Lunch--App-Icon.png */,
 				F6F580A81BBE757B00DDC328 /* background.png */,
 				F68ECF761BBE59E500092AB4 /* icon-food-1.png */,
 				F68ECF771BBE59E500092AB4 /* icon-food-2.png */,
@@ -200,6 +214,9 @@
 				F6F580B41BBEB4DD00DDC328 /* TutorialCardViewController.h */,
 				F6F580B51BBEB4DD00DDC328 /* TutorialCardViewController.m */,
 				F6F580B61BBEB4DD00DDC328 /* TutorialCardViewController.xib */,
+				F6AABD961BBEC19C00B4A3D4 /* HistoryTableViewCell.h */,
+				F6AABD971BBEC19C00B4A3D4 /* HistoryTableViewCell.m */,
+				F6AABD981BBEC19C00B4A3D4 /* HistoryTableViewCell.xib */,
 			);
 			path = Lunch;
 			sourceTree = "<group>";
@@ -251,6 +268,10 @@
 				F6DEE8B71BBDC9AD00060640 /* GetChoicesCommand.m */,
 				F6DEE8C31BBDF65900060640 /* GetLoginCommand.h */,
 				F6DEE8C41BBDF65900060640 /* GetLoginCommand.m */,
+				F6AABD931BBEBD6600B4A3D4 /* GetHistoryCommand.h */,
+				F6AABD941BBEBD6600B4A3D4 /* GetHistoryCommand.m */,
+				F6A98FE21BBECD0A00ECA7D6 /* JoinChoiceCommand.h */,
+				F6A98FE31BBECD0A00ECA7D6 /* JoinChoiceCommand.m */,
 			);
 			name = DataAccess;
 			sourceTree = "<group>";
@@ -362,7 +383,9 @@
 				F68ECF7D1BBE59E500092AB4 /* icon-food-3.png in Resources */,
 				F6F580A91BBE757B00DDC328 /* background.png in Resources */,
 				F68ECF7C1BBE59E500092AB4 /* icon-food-2.png in Resources */,
+				F6A98FE61BBECD6500ECA7D6 /* Lunch--App-Icon.png in Resources */,
 				F68ECF731BBE4E4D00092AB4 /* icon-globe.png in Resources */,
+				F6AABD9A1BBEC19C00B4A3D4 /* HistoryTableViewCell.xib in Resources */,
 				F6DEE87A1BBDBA1B00060640 /* LaunchScreen.storyboard in Resources */,
 				F68ECF7E1BBE59E500092AB4 /* icon-food-4.png in Resources */,
 				F6DEE8771BBDBA1B00060640 /* Assets.xcassets in Resources */,
@@ -402,9 +425,12 @@
 				F6DEE8AC1BBDC35300060640 /* User.m in Sources */,
 				F6DEE8721BBDBA1B00060640 /* ViewController.m in Sources */,
 				F6F580AC1BBE90B900DDC328 /* TutorialViewController.m in Sources */,
+				F6AABD951BBEBD6600B4A3D4 /* GetHistoryCommand.m in Sources */,
 				F6DEE8BB1BBDCBF400060640 /* Choice.m in Sources */,
+				F6AABD991BBEC19C00B4A3D4 /* HistoryTableViewCell.m in Sources */,
 				F6DEE8C11BBDEB7E00060640 /* JoinButton.m in Sources */,
 				F6DEE8B81BBDC9AD00060640 /* GetChoicesCommand.m in Sources */,
+				F6A98FE41BBECD0A00ECA7D6 /* JoinChoiceCommand.m in Sources */,
 				F6F580B71BBEB4DD00DDC328 /* TutorialCardViewController.m in Sources */,
 				F6DEE8AF1BBDC35E00060640 /* Venue.m in Sources */,
 				F6DEE8BE1BBDCFE400060640 /* FeedViewController.m in Sources */,

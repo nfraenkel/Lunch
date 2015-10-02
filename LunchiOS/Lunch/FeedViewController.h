@@ -9,12 +9,14 @@
 #import <UIKit/UIKit.h>
 #import "LunchSingleton.h"
 #import "GetChoicesCommand.h"
+#import "GetHistoryCommand.h"
+#import "JoinChoiceCommand.h"
 #import "JoinButton.h"
 #import "Choice.h"
 #import "User.h"
 #import "Constants.h"
 
-@interface FeedViewController : UIViewController <UIScrollViewDelegate, GetChoicesDelegate> {
+@interface FeedViewController : UIViewController <UIScrollViewDelegate, GetChoicesDelegate, GetHistoryDelegate, JoinChoiceDelegate, UITableViewDataSource, UITableViewDelegate> {
     UIScrollView *sv;
     UITableView *tv;
     UIView *cv;
@@ -29,6 +31,6 @@
 @property (strong, nonatomic) LunchSingleton *singleton;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segmentedControl;
 
-@property (strong, nonatomic) NSMutableArray *choices;
+@property (strong, nonatomic) NSMutableArray *choices, *history;
 
 @end
