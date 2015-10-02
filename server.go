@@ -215,6 +215,11 @@ func (c *Choice) Create() error {
 		`, c.User, c.Venue).Scan(&c.Created)
 }
 
+func (c *Choice) Delete() error {
+	_, err := server.db.Exec(`DELETE FROM choices WHERE user_id = $1`, c.User)
+	return err
+}
+
 type LoginPayload struct {
 	Email string `json:"email"`
 }
@@ -255,6 +260,20 @@ func GetUsers(c web.C, w http.ResponseWriter, r *http.Request) (int, error) {
 	}
 	w.Header().Set("Content-Type", "application/json")
 	w.Write(buf)
+	return http.StatusOK, nil
+}
+
+func DeleteChoice(c web.C, w http.ResponseWriter, r *http.Request) (int, error) {
+	choice := &Choice{}
+	var err error
+	decoder := json.NewDecoder(r.Body)
+	if err = decoder.Decode(choice); err != nil {
+		return http.StatusNotAcceptable, err
+	}
+	err = choice.Delete()
+	if err != nil {
+		return http.StatusInternalServerError, err
+	}
 	return http.StatusOK, nil
 }
 
@@ -358,6 +377,7 @@ func main() {
 	goji.Post("/api/login", ApiHandler(Login))
 	goji.Get("/api/venues", ApiHandler(GetVenuesWithChoices))
 	goji.Get("/api/users", ApiHandler(GetUsers))
+	goji.Delete("/api/choices", ApiHandler(DeleteChoice))
 	goji.Post("/api/venues", ApiHandler(CreateVenue))
 	goji.Post("/api/choices", ApiHandler(CreateChoice))
 	goji.Post("/api/populate-db", ApiHandler(PopulateDb))
